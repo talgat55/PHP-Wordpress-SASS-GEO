@@ -1,86 +1,75 @@
 </div><!-- #content -->
-
+<?php
+$phone = get_field('phone_main', 'option');
+$email = get_field('email_main', 'option');
+$redyPhone = $phone ? pregPhone($phone) : '';
+?>
 <footer class="site-footer">
-    <?php if(!is_home()){  ?>
-        <div class="wrap clearfix">
-            <div class="container clearfix">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                        <p>
-                            Mr.Batler © 2019
-                        </p>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                        <p>
-                            <a href="<?=ChangeUrlForPages('privacy-policy');?>" class="policy-footer-link" >
+    <div class="container ">
+        <div class="first-row">
+            <div class="row">
 
-                                <?php _e('Политика конфиденциальности', 'light'); ?>
-                            </a>
-                        </p>
+                <div class="col-sm-6 col-xs-12">
+                    <div class="content">
+                        <h3 class="title">
+                            Навигация
+                        </h3>
+                        <?php wp_nav_menu('menu_id=menu-main-footer&container=div&menu_class=bottom-main-container clearfix&theme_location=top_menu'); ?>
                     </div>
-                    <div class="text-right col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                        <ul class="soc-links">
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <div class="content">
+                        <h3 class="title">
+                            Контакты
+                        </h3>
+                        <ul class="footer-contact-block">
                             <li>
-                                <a target="_blank" href="https://vk.com/batlerbar">
-                                    <img src="<?php echo get_theme_file_uri('/assets/images/vk.jpg') ?>"
-                                         alt="иконка">
-                                </a>
+                                <a href="tel:<?= $redyPhone; ?>" class="link-clean"><?= $phone; ?></a>
                             </li>
                             <li>
-                                <a  target="_blank" href="https://www.instagram.com/batlerbar/">
-                                    <img src="<?php echo get_theme_file_uri('/assets/images/inst.png') ?>"
-                                         alt="иконка">
-                                </a>
+                                <a href="mailto:<?= $email; ?>" class="link-clean  email"><?= $email; ?></a>
                             </li>
                             <li>
-                                <a target="_blank"  href="https://web.facebook.com/batlerbar/">
-                                    <img src="<?php echo get_theme_file_uri('/assets/images/fb.png') ?>"
-                                         alt="иконка">
+                                <a href="#" class="link-clean">
+                                    г. Радужный, ул. Северная, 30
                                 </a>
                             </li>
+
 
                         </ul>
-                    </div>
-                    <div class="text-right col-lg-4 col-md-4 col-sm-12 col-xs-12">
-
-                                <a target="_blank" class="bootom-copyright" title="Перейти на сайт разработчика"
-                                   href="http://asmart-group.ru/"><?php  _e('Сайт разработан IT-company', 'light'); ?> <span>ASMART</span></a>
-
 
                     </div>
+
+
                 </div>
             </div>
 
+
         </div>
-    <?php }  ?>
+        <div class="second-row">
+            <div class="row">
+            <div class="col-sm-6 col-xs-12 text-left">
+                <p class="copyright">
+                    ГК «ГеоЛад» © 2019 г. Все права защищены
+                </p>
+            </div>
+            <div class="col-sm-6 col-xs-12 text-right">
+                <a target="_blank" class="bootom-copyright" title="Перейти на сайт разработчика"
+                   href="http://asmart-group.ru/"><?php _e('Разработка сайта:', 'light'); ?>
+                    <span>Asmart Group</span></a>
+            </div>
+
+
+        </div>
+        </div>
+    </div>
+
 
 </footer>
 </div><!-- .site-content-contain -->
 </div><!-- #page -->
 <?php wp_footer(); ?>
 
-
-
-
-<div class="menu-overlay"></div>
-<div class="success-modal">
-    <div class="content">
-
-        <div class="reserve-text">
-            <?php  _e('Вы забронировали столик в ресторане mr.Batler! <br>
-                    В ближайшее время наш менеджер свяжется с вами, чтобы подтвердить вашу бронь.  <br>
-                    До встречи в mr.Batler!', 'light');
-            ?>
-        </div>
-        <div class="main-text">
-
-            <?php  _e('Спасибо, что написали нам! <br>
-                            В ближайшее время наш менеджер свяжется с вами!', 'light');
-            ?>
-        </div>
-        <a href="#" class="close-modal"><?php  _e('Закрыть', 'light'); ?></a>
-    </div>
-</div>
 
 </body>
 </html>

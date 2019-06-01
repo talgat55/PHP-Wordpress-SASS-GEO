@@ -5,252 +5,196 @@
 
 
 get_header(); ?>
-    <h1 class="hide-title"><?php _e('Главная страница', 'light'); ?></h1>
-    <div id="pagepiling" class="content-area">
-        <div class="section" id="section1">
-            <div class="home-slider-walp">
-                <div class="home-slider swiper-container">
+    <section class="first-block">
+        <div class="clearfix">
+            <div class="container-custom relative">
+                <div class="row">
+                    <h1 class="title text-left">Группа компаний «ГеоЛад»</h1>
+                    <blockquote>
+                        Состоит из 4 предприятий и основана <span>в 1998 году в городе «Радужный»,</span><br>
+                        общая численность персонала группы — <span>500+</span> человек.
+                    </blockquote>
+                    <a href="#" class="link-alt">
+                        Узнать подробнее
+                    </a>
+                    <div class="kinds-block">
+                        <div class="row">
+                            <div class="item col-sm-3 col-xs-12">
+                                <a href="#" class="item-walp">
+                                    <h3 class="title">
+                                        ГеоЛад-Актив
+                                    </h3>
+                                    <div class="content">
+                                        управляющая компания
+                                    </div>
+                                    <div class="arrow">
+                                        <img class="main"
+                                             src="<?php echo get_theme_file_uri('/assets/images/arrow.png') ?>"
+                                             alt="иконка">
+                                        <img class="hover"
+                                             src="<?php echo get_theme_file_uri('/assets/images/arrow-active.png') ?>"
+                                             alt="иконка">
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="item col-sm-3 col-xs-12">
+                                <a href="#" class="item-walp">
+                                    <h3 class="title">
+                                        ГеоЛад-Актив
+                                    </h3>
+                                    <div class="content">
+                                        геофизические и геолого - технологические исследования скважин
+                                    </div>
+                                    <div class="arrow">
+                                        <img class="main"
+                                             src="<?php echo get_theme_file_uri('/assets/images/arrow.png') ?>"
+                                             alt="иконка">
+                                        <img class="hover"
+                                             src="<?php echo get_theme_file_uri('/assets/images/arrow-active.png') ?>"
+                                             alt="иконка">
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="item col-sm-3 col-xs-12">
+                                <a href="#" class="item-walp">
+                                    <h3 class="title">
+                                        Геолад - Скважинные Технологии
+                                    </h3>
+                                    <div class="content">
+                                        текущий и капитальный ремонт скважин, бурение скважин
+                                    </div>
+                                    <div class="arrow">
+                                        <img class="main"
+                                             src="<?php echo get_theme_file_uri('/assets/images/arrow.png') ?>"
+                                             alt="иконка">
+                                        <img class="hover"
+                                             src="<?php echo get_theme_file_uri('/assets/images/arrow-active.png') ?>"
+                                             alt="иконка">
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="item col-sm-3 col-xs-12">
+                                <a href="#" class="item-walp">
+                                    <h3 class="title">
+                                        ГеоЛад - Скважинные Технологии Поволжья
+                                    </h3>
+                                    <div class="content">
+                                        реконструкция скважин методом ЗБС, текущий и капитальный ремонт скважин в
+                                        Приволжском
+                                    </div>
+                                    <div class="arrow">
+                                        <img class="main"
+                                             src="<?php echo get_theme_file_uri('/assets/images/arrow.png') ?>"
+                                             alt="иконка">
+                                        <img class="hover"
+                                             src="<?php echo get_theme_file_uri('/assets/images/arrow-active.png') ?>"
+                                             alt="иконка">
+
+                                    </div>
+                                </a>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section class="second-block">
+        <div class="container-custom relative">
+            <div class="row">
+                <h2 class="sub-title">
+                    Миссия компании
+                </h2>
+                <p class="description">
+                    <span>Динамичное развитие компании</span> и расширение спектра оказываемых услуг, <span>повышение технического потенциала компании</span>,
+                    <span>совершенствование технологии</span> ведения работ, эффективное ведение производственной
+                    деятельности, <span>обеспечение безаварийного производственного процесса</span> и безопасных условий
+                    труда.<br>
+                    А также, <span>минимизация негативного влияния своей деятельности на окружающую среду.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="partners-block">
+        <div class="container-custom relative">
+            <div class="row">
+                <div class="bar flex-space-beetwen">
+                    <h2 class="sub-title white-title">
+                        Наши партнеры
+                    </h2>
+                    <a href="#" class="link-alt">
+                        Весь список
+                    </a>
+
+                </div>
+                <ul class="pathers-list flex-space-beetwen">
                     <?php
-                    $args = [
-                        'posts_per_page' => '-1',
-                        'post_type' => 'sliders',
+                    $args = array(
+                        'posts_per_page' => '5',
+                        'post_type' => 'partners',
+                        'orderby' => 'date',
+                        'order' => 'DESC',
                         'post_status' => 'publish'
-                    ];
+
+                    );
 
                     $the_query = new WP_Query($args);
-                    $detect = new Mobile_Detect();
-                    while ($the_query->have_posts()) :
-                        $the_query->the_post();
-                        $post_id = $the_query->post->ID;
 
-                        $title_one = returnTextLang('title-one');
+                    if ($the_query->have_posts()) :
+                        while ($the_query->have_posts()) :
+                            $the_query->the_post();
+                            $post_id = $the_query->post->ID;
+                            $img_url = wp_get_attachment_url(get_post_thumbnail_id($post_id), 'full');
+                            $link = get_field('link_partners', $post_id);
 
-                        $text_one = returnTextLang('text-one');
-                        $title_two = returnTextLang('title-two');
-                        $text_two = returnTextLang('text-two');
-                        $video_mp4 = get_field('slider_video_mp4');
-                        $video_webm = get_field('slider_video_webm');
-
-                        $link_one = returnTextLang('link-one');
-                        $link_two = returnTextLang('link-two');
-
-                        if (empty($video_mp4)) {
-
-                            $back = 'style="background: url(' . wp_get_attachment_image_src(get_post_thumbnail_id($post_id), "full")[0] . ') no-repeat!important;"';
-
-                        } else {
-
-                            $back = '';
-
-                        }
-
-                        ?>
-                        <div class="item" <?= $back; ?>>
-                            <?php
-                            if (!empty($video_mp4)) { ?>
-                                <div class="overlay-img"></div>
-                                <div class="overlay-color"></div>
-                                <?php if (!$detect->isMobile()) { ?>
-
-                                    <div class="video-wrapper">
-
-                                        <video autoplay loop controls="controls"
-                                               poster="<?= wp_get_attachment_image_src(get_post_thumbnail_id($post_id), "full")[0]; ?>"
-                                               preload="none" muted>
-                                            <source src="<?= $video_mp4; ?>" type='video/mp4'>
-                                            <source src="<?= $video_webm; ?>" type='video/webm'>
-                                        </video>
-
-                                    </div>
-
-                                <?php } else { ?>
-
-                                    <div class="mobile-img-background"
-                                         style="background: url(<?= wp_get_attachment_image_src(get_post_thumbnail_id($post_id), "full")[0]; ?>); "></div>
-
-                                <?php } ?>
-                            <?php } ?>
-
-                            <div class="container  relative-slider">
-                                <div class="row">
-                                    <div class="content-slider">
-
-                                        <div class="row">
-                                            <div class="first-block ">
-                                                <h3>
-                                                    <a href="<?= $link_one; ?>">
-                                                        <?= $title_one; ?>
-                                                    </a>
-
-                                                </h3>
-                                                <div class="text">
-                                                    <?= $text_one; ?>
-                                                </div>
-                                            </div>
-                                            <div class="second-block  ">
-                                                <h3>
-                                                    <a href="<?= $link_two; ?>">
-                                                        <?= $title_two; ?>
-                                                    </a>
-                                                </h3>
-                                                <div class="text">
-                                                    <?= $text_two; ?>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    <?php endwhile; ?>
-
-                </div>
-                <div class="container relative">
-                    <div class="row">
-                        <ul class="arr-slider">
-                            <li>
-                                <a href="#" class="prev">
-                                    <img src="<?php echo get_theme_file_uri('/assets/images/arr.png') ?>"
-                                         alt=" стрелка">
+                            ?>
+                            <li class="item">
+                                <a href="<?= $link; ?>" target="_blank">
+                                    <img src="<?= $img_url; ?>" alt="Логотип партнер"/>
                                 </a>
-                            </li>
-                            <li>
-                                <a href="#" class="next">
-                                    <img src="<?php echo get_theme_file_uri('/assets/images/arr.png') ?>"
-                                         alt=" стрелка">
-                                </a>
+
+
                             </li>
 
 
-                        </ul>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section" id="section2">
-            <a href="<?= ChangeUrlForPages('atmosfera'); ?>" class="one-type-link">
-                <?php _e('Атмосфера заведения', 'light'); ?>
-            </a>
-        </div>
-        <div class="section" id="section4"   >
-
-            <div class="container">
-                <div class="row">
-                    <div class="event-block col-sm-12 col-xs-12">
-                        <div class="row">
-                            <h2 class="title-section">
-                                <?php _e('События', 'light'); ?>
-                            </h2>
-                            <ul class="list-last-events">
-                                <?php
-                                $args = array(
-                                    'posts_per_page' => '3',
-                                    'post_type' => 'post',
-                                    'orderby' => 'date',
-                                    'order' => 'DESC',
-                                    'post_status' => 'publish'
-
-                                );
-
-                                $the_query = new WP_Query($args);
-
-                                if ($the_query->have_posts()) :
-                                    while ($the_query->have_posts()) :
-                                        $the_query->the_post();
-                                        $post_id = $the_query->post->ID;
-                                        $img_url = wp_get_attachment_url(get_post_thumbnail_id($post_id), 'event-image');
-                                        $add_image = get_field('add_image_post', $post_id);
-                                        $redyImage =  $add_image ? $add_image["sizes"]["event-image"] : $img_url;
-
-                                        ?>
-                                        <li class="item  col-md-4 col-sm-6 col-xs-12"   >
-                                            <div class="img-block">
-                                                <a href="<?= get_the_permalink($post_id); ?> "
-                                                   title="Перейти на детальную страницу">
-                                                    <img src="<?= $redyImage; ?>" alt="Изображение"/>
-                                                </a>
-                                            </div>
-                                            <div class="date">
-                                                <img src="<?php echo get_theme_file_uri('/assets/images/calendar.png') ?>"
-                                                     alt="иконка">
-                                                <p>
-                                                    <?= get_the_date('d.m.Y'); ?>
-                                                </p>
-
-                                            </div>
-                                            <h3 class="title">
-                                                <a href="<?= get_the_permalink($post_id); ?> " title="Перейти на детальную страницу">
-                                                    <?= get_the_title(); ?>
-                                                </a>
-                                            </h3>
-                                            <div class="content">
-                                                <?= mb_strimwidth(strip_tags(get_the_content($post_id)),'0','60', '...') ;?>
-                                            </div>
-                                            <a href="<?= get_the_permalink($post_id); ?>" class="link-more">
-                                                <?php _e('Узнать подробнее', 'light'); ?>
-                                            </a>
-
-                                        </li>
-
-                                    <?php
-                                    endwhile;
-                                endif;
-                                wp_reset_query();
-
-                                ?>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="section" id="section3">
-            <div class="bg-block col-sm-6 col-xs-12">
-                <div class="third-blocks">
-                    <div>
-                        <h2 class="center-flex">
-                            <?php _e('Меню', 'light'); ?>
-                        </h2>
                         <?php
-                        $link_menu = get_field('link_menu_home', 'option');
-                        $link_bar_menu = get_field('link_menu_bar_home', 'option');
-                        $redyLinkMenu = $link_menu ? $link_menu : '';
-                        $redyLinkMenuBar = $link_bar_menu ? $link_bar_menu : '';
-                        ?>
-                        <a href="<?= $redyLinkMenu; ?>" target="_blank" class="two-type-link">
+                        endwhile;
+                    endif;
+                    wp_reset_query();
 
-                            <?php _e('посмотреть', 'light'); ?>
-                        </a>
-                    </div>
-                </div>
+                    ?>
+
+                </ul>
             </div>
-            <div class="bg-block col-sm-6 col-xs-12">
-                <div class="third-blocks">
-                    <div>
-                        <h2 class="center-flex">
-
-                            <?php _e('Барная
-                            карта', 'light'); ?>
-                        </h2>
-                        <a href="<?= $redyLinkMenuBar; ?>" target="_blank" class="two-type-link">
-
-                            <?php _e('посмотреть', 'light'); ?>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-
         </div>
-    </div><!-- #primary -->
+    </section>
+    <section class="third-block relative">
+        <div class="container-custom relative">
+            <div class="row">
+                <p class="description">
+                    <span>Промоакция, в рамках сегодняшних воззрений,</span> традиционно искажает контент. Согласно предыдущему,
+                    соц-дем характеристика аудитории восстанавливает портрет потребителя. Пак-шот экономит фактор
+                    коммуникации. <span>Рейтинг,</span> безусловно, версифицирован.<br>
+                    <span> Практика однозначно показывает,</span> что спонсорство стабилизирует традиционный канал. <span>Пресс-клиппинг</span>
+                    основан на тщательном анализе данных. Медиамикс индуцирует пресс-клиппинг, оптимизируя бюджеты.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="map-block relative">
+        <img  src="<?php echo get_theme_file_uri('/assets/images/bg-four.jpg') ?>"   alt="карта">
 
+        <div class="container-custom relative">
+            <div class="row">
+
+            </div>
+        </div>
+    </section>
 <?php get_footer();

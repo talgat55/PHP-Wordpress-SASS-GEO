@@ -1,13 +1,42 @@
-$font_blacked_bold: 'Blacker-Text-Bold'
-$font_blacked_italic_bold: 'Blacker-Text-Bold-Italic'
+$font_bold: 'Gotham Pro Bold'
+$font_light: 'Gotham Pro Light'
+$font_medium: 'Gotham Pro Medium'
+$font_regular: 'Gotham Pro Regular'
 
-$font_blacked_book_bold: 'Blacker-Text-Book'
-$font_blacked_book__italic_bold: 'Blacker-Text-Book-Italic'
 
-$font_calibri_regular: 'Calibri Regualar'
-$font_calibri_bold: 'Calibri Bold'
-$font_calibri_light: 'Calibri Light'
-$main_color: #c4a669
+$main_color: #4498E5
+$gray_color: #333
+
+@font-face
+  font-family: 'Gotham Pro Bold'
+  src: url('GothaProBol.woff') format('woff'),
+  url('GothaProBol.ttf') format('truetype')
+  font-weight: normal
+  font-style: normal
+
+@font-face
+  font-family: 'Gotham Pro Light'
+  src: url('GothaProLig.woff') format('woff'),
+  url('GothaProLig.ttf') format('truetype')
+  font-weight: normal
+  font-style: normal
+
+
+
+@font-face
+  font-family: 'Gotham Pro Medium'
+  src: url('GothaProMed.woff') format('woff'),
+  url('GothaProMed.ttf') format('truetype')
+  font-weight: normal
+  font-style: normal
+
+
+@font-face
+  font-family: 'Gotham Pro Regular'
+  src: url('GothaProReg.woff') format('woff'),
+  url('GothaProReg.ttf') format('truetype')
+  font-weight: normal
+  font-style: normal
 
 @mixin placeholder
   &::-webkit-input-placeholder
@@ -24,54 +53,97 @@ $main_color: #c4a669
 *:active
   outline: none
 
+.title
+  font-size: 32px
+  color: #fff
+  font-family: $font_bold
+  margin-top: 175px
+
+.site-content-contain
+  margin-left: 340px
+  position: relative
+
+
+@mixin clearfix()
+  &::after
+    display: block
+    content: ""
+    clear: both
+
+
+.site-content
+  @include clearfix
+
+
 
 .hide-title
   margin: 0
-  padding: 0
   height: 0
   overflow: hidden
-.mobile-logo
-  display: none
+
+
+
+.container-custom
+  width: 959px
+  margin: 0 auto
+
+
+
+.flex-container
+  display: -ms-flexbox
+  display: -webkit-flex
+  display: flex
+
+
+
+a.link
+  background: #FFFFFF
+  border-radius: 5px
+  color: #313131
+  text-align: center
+  display: inline-block
+  padding: 11px 15px
+  font-family: $font_medium
+  transition: all .3s
+  &:hover
+    background-color: $main_color
+    color: #fff
+    text-decoration: none
+
+a.link-alt
+  display: inline-block
+  border: 2px solid #FFFFFF
+  border-radius: 5px
+  font-family: $font_medium
+  color: #fff
+  text-decoration:  none
+  padding: 16px 48px
+  transition: all .3s
+  &:hover
+    text-decoration: none
+    border-color: $main_color
+    background-color: $main_color
+
+
+
 .relative
   position: relative
 
-.relative-slider
-  position: relative
-  height: 100vh
 
-.two-type-link,
-.one-type-link
-  font-family: $font_calibri_regular
-  font-size: 20px
+.sub-title
+  color: #313131
+  font-size: 32px
+  font-family: $font_bold
+  margin-top: 0
+
+
+
+.white-title
   color: #fff
-  text-transform: uppercase
-  display: table
-  margin: 0 auto
-  padding: 10px 32px
-  border-radius: 5px
-  letter-spacing: 2px
-  outline: none
-  transition: all .3s
 
-.one-type-link
-  background-color: $main_color
 
-  &:hover
-    text-decoration: none
-    background-color: #000
-    color: #fff
 
-.two-type-link
-  background-color: #000
-  margin: 0
-  padding: 14px 55px
-
-  &:hover
-    text-decoration: none
-    background-color: $main_color
-    color: #fff
-
-.center-flex
+.flex-space-beetwen
   display: -ms-flexbox
   display: -webkit-flex
   display: flex
@@ -81,517 +153,18 @@ $main_color: #c4a669
   -webkit-flex-wrap: nowrap
   -ms-flex-wrap: nowrap
   flex-wrap: nowrap
-  -webkit-justify-content: center
-  -ms-flex-pack: center
-  justify-content: center
+  -webkit-justify-content: space-between
+  -ms-flex-pack: justify
+  justify-content: space-between
   -webkit-align-content: stretch
   -ms-flex-line-pack: stretch
   align-content: stretch
   -webkit-align-items: center
   -ms-flex-align: center
   align-items: center
-.page-template-page-booking,
-.page-template-page-menu
-  .site-footer .wrap
-    position: relative
 
-.menu-overlay
-  position: fixed
-  top: 0
-  left: 0
-  width: 100%
-  height: 100%
-  background: rgba(0, 0, 0, .7)
-  opacity: 0
-  transition: all .4s ease-in
-  visibility: hidden
-  z-index: 90
 
-  &.active
-    opacity: 1
-    visibility: visible
-.only-timepicker .datepicker--nav,
-.only-timepicker .datepicker--content
-  display: none
-.only-timepicker .datepicker--time
-  border-top: none
-.page-title
-  font-size: 33px
-  color: #000
-  font-family: $font_blacked_bold
-  margin-top: 0
 
-.page-template-page-contacts
-  .site-content
-    height: 100vh
-
-.page-template-page-atmosfera
-  overflow-y: hidden
-
-#pagepiling .section
-  height: 100vh
-#pp-nav span,
-.pp-slidesNav span
-  width: 12px
-  height: 12px
-
-.pp-tableCell
-  .bg-block:last-child
-    .third-blocks
-      >div
-        width: 212px
-.error404
-  .content-area
-    height: 80vh
-  .content-custom
-    margin-top: 140px
-    .error-page-text
-      font-family: $font_calibri_regular
-      font-size: 16px
-    .page-title
-      font-size: 100px
-.page-template-default
-  .content-custom
-    margin-top: 140px
-
-@import "main.sass"
 @import "header.sass"
+@import "main.sass"
 @import "footer.sass"
-.en_US
-  .pp-tableCell .bg-block:last-child .third-blocks > div
-    width: 135px
-  .third-blocks > div
-    width: 164px
-
-.close-preloader
-  display: table
-  text-align: center
-  margin: 10px auto 0
-  background: $main_color
-  color: #fff
-  padding: 10px 20px
-  border-radius: 5px
-  transition: all .3s
-  &:hover
-    background: red
-    text-decoration: none
-    color: #fff
-  &:active,
-  &:focus
-    text-decoration: none
-    color: #fff
-
-.mobile-field
-  display: none
-
-.not-found-articles
-  min-height: 300px
-  font-size: 16px
-  font-family: $font_calibri_regular
-
-.wpcf7-mail-sent-ok
-  display: none!important
-.success-modal
-  position: fixed
-  display: none
-  top: 50%
-  left: 50%
-  transform: translateX(-50%) translateY(-50%)
-  z-index: 99999
-  .content
-    padding: 20px 50px 30px
-    font-size: 33px
-    color: #fff
-    font-family: $font_blacked_bold
-    text-align: center
-    background-color: $main_color
-    span
-      display: block
-      width: 100%
-      margin-bottom: 25px
-    .close-modal
-      font-size: 16px
-      position: absolute
-      bottom: 3px
-      left: 50%
-      margin-left: -34px
-      color: #fff
-      font-family: $font_calibri_light
-      &:hover
-        color: red
-  .reserve-text,
-  .main-text
-    display: none
-    &.show-text
-      display: block!important
-
-
-.addtransition
-  transition: all .3s
-.hide-preloader
-  opacity: 0
-  visibility: hidden
-
-//
-// Pagination
-//
-.pagination
-  ul
-    margin: 0px
-    padding: 0px
-    li
-      display: inline-block
-      a
-        font-family: $font_calibri_regular
-        color: #000
-        text-decoration: none
-        padding: 10px
-        &:hover
-          color: $main_color
-
-      &.active
-        a
-          color: $main_color
-
-
-
-
-
-@media(max-width: 1590px)
-  header .menu-link
-    top: 40px
-  .top-main-container
-    padding-top: 25px
-  .home-slider-walp .arr-slider
-    right: 0
-
-  .logo
-    margin-top: 30px
-    display: block
-
-    img
-      height: 130px
-
-  .top-main-container li a
-    font-size: 15px
-  .menu-bar
-    width: 300px
-  .first-wrap .list-contact-informaion
-    margin-top: 25px
-  .first-wrap .link.feedback
-    margin-top: 20px
-
-  .first-wrap .list-contact-informaion li
-    margin-bottom: 15px
-
-  .menu-bar:after
-    width: 237px
-    height: 198px
-  .menu-bar .link-rezerv
-    bottom: 40px
-  header .top-bar
-    padding: 20px 0
-  header .menu-link
-    top: 1px
-  .page-template-default  .content-custom,
-  .content-area .content-custom ,
-  .page-template-page-atmosfera .atmosfera-block
-    margin-top: 75px
-  .page-template-page-about .cont-mains,
-  .page-template-page-booking .cont-mains
-    padding-top: 75px
-  .page-template-page-booking .page-title
-    margin-bottom: 40px
-@media(max-width: 1370px)
-  #section4
-  .title-section
-    font-size: 35px!important
-    margin-bottom: 20px!important
-
-  .list-last-events
-    .item
-      .date
-        padding: 10px 0 5px !important
-      .title
-        font-size: 21px!important
-        min-height: 79px!important
-        a
-          font-size: 21px!important
-
-
-      .content
-        padding: 10px 0!important
-        font-size: 15px!important
-@media(max-width: 1360px)
-  header .menu-link
-    left: 10px
-    position: fixed
-
-@media(max-width: 1295px)
-  header .top-bar
-    padding: 20px 75px
-
-
-@media(max-width: 1024px)
-  html, body
-    overflow: auto!important
-  .home-slider-walp .content-slider .second-block,
-  .home-slider-walp .content-slider .first-block
-    width: 48%
-    padding-right: 3%
-  .home-slider-walp .content-slider .second-block
-    padding-right: 0
-    padding-left: 3%
-  .site-footer
-    .col-xs-12
-      text-align: center
-    .wrap
-      p
-        display: table
-        margin: 0 auto
-      .soc-links
-        display: table
-        text-align: center
-
-  #section2
-    height: auto!important
-    padding: 150px 0
-  #section3
-    .third-blocks h2
-      font-size: 40px
-      margin: 0 0 25px
-  #section4
-    height: auto!important
-    padding: 40px 0!important
-    .title-section
-      margin-top: 30px
-      margin-bottom: 30px
-    .list-last-events
-      .item
-        margin-bottom: 30px
-        .date
-          padding: 20px 0 15px
-        &:first-child
-          padding-left: 15px!important
-    .list-last-events .item:last-child
-      padding-right: 15px!important
-  body.home
-    height: auto!important
-
-@media(max-width: 800px)
-  .home-slider-walp .content-slider
-    margin: 0 15px
-  .home-slider-walp .content-slider .second-block,
-  .home-slider-walp .content-slider .first-block
-    width: 100%
-    padding-right: 0
-    padding-left: 0
-  .home-slider-walp .content-slider .second-block .text,
-  .home-slider-walp .content-slider .first-block .text
-    margin-bottom: 20px
-  .page-template-page-archive-news .cont-mains,
-  .single-post .cont-mains,
-  .page-template-page-about .cont-mains,
-  .page-template-page-booking .cont-mains
-    padding-left: 30px
-    padding-right: 30px
-  .slider-atm
-    width: 100%!important
-
-  .atm-controllers
-    z-index: 2
-    .col-xs-12
-      display: inline-block
-      width: auto
-    .text-right
-      position: absolute
-      right: 0
-    .text-left
-      position: absolute
-      left: 0
-
-@media(max-width: 768px)
-  .single-post .mobile-block-img,
-  .page-template-page-about .mobile-block-img
-    display: block!important
-  .page-template-page-booking-php
-    .en_US
-      h1.page-title
-        height: 0
-        overflow: hidden
-
-
-
-
-  #section4
-    .list-last-events
-      .item
-        .img-block
-          height: auto!important
-        .title
-          min-height: auto!important
-          a
-            font-size: 24px
-        .content
-          font-size: 15px
-    .title-section
-      font-size: 40px
-@media(max-width: 600px)
-  .home-slider
-    height: auto
-    overflow: hidden
-  .home-slider-walp .video-wrapper
-    left: 50%
-    transform: translateX(-50%)
-    opacity: 0
-    transition: all .3s
-  .show-video-block
-    opacity: 1!important
-
-  .menu-bar .link-rezerv
-    left: 0!important
-  .success-modal
-    padding: 37px 15px
-    .content
-      font-size: 20px
-  header
-    z-index: 192
-  body.home
-    height: auto!important
-  .logo
-    margin-top: 0
-  .top-main-container::after
-    display: none
-  .menu-bar
-    z-index: 190
-    height: 120%
-  .menu-bar .link-rezerv
-    bottom: 0
-    position: relative
-    transform: none
-    margin-top: 50px
-  .mobile-field
-    display: block
-  .single-post .cont-mains
-    padding-top: 65px
-  .page-template-page-about .navigation-tabs li,
-  .page-template-page-archive-news .cont-mains .navigation-tabs li,
-  .single-post .cont-mains .navigation-tabs li
-    display: block
-    list-style: none
-  .page-template-page-about .navigation-tabs li:last-child a
-      margin-left: 0
-
-  .page-template-page-archive-news .cont-mains .navigation-tabs li:last-child,
-  .single-post .cont-mains .navigation-tabs li:last-child
-    padding-left: 0
-  .home-slider-walp
-    .content-slider
-      .second-block .text,
-      .first-block .text
-        font-size: 14px
-      .second-block h3,
-      .first-block h3
-        margin-bottom: 15px
-  .home-slider-walp .content-slider
-    bottom: 15px
-
-  .not-found-articles
-    min-height: 100px
-  .home-slider-walp .content-slider
-    padding: 0 15px
-  .page-template-page-atmosfera .atmosfera-block
-    margin: 0 15px
-
-  .page-template-page-atmosfera .slider-atm .item img
-    height: auto
-    width: 100%
-  #page
-    overflow-x: hidden
-  .page-template-page-archive-news .cont-mains .content-news > div,
-  .single-post .cont-mains .content-news > div
-    display: block
-  .page-template-page-archive-news .cont-mains .content-news .time-line .list li,
-  .single-post .cont-mains .content-news .time-line .list li
-    display: inline-block
-  .page-template-page-archive-news .cont-mains .nav-page,
-  .single-post .cont-mains .nav-page
-    text-align: right
-  .page-template-page-archive-news .cont-mains .content-news .content,
-  .single-post .cont-mains .content-news .content
-    padding-left: 0
-  .page-template-page-booking .contact-form-booking .subscribe-block
-    width: 233px
-    margin: 0 auto
-  .page-template-page-booking .contact-form-booking .wpcf7-submit
-    margin: 0 auto
-  .page-template-page-contacts .site-content
-    height: auto
-
-  #map
-    height: 300px
-    margin-top: 72px
-  #section3
-    height: auto!important
-    .bg-block:first-child,
-    .bg-block:last-child
-      height: 300px
-  .page-template-page-contacts
-    .first-wrap
-      height: auto
-      position: relative
-      padding: 30px 15px
-      text-align: center
-  .page-template-page-contacts .site-footer .wrap
-    position: relative
-
-  header .top-bar
-    transition: all .5s
-    position: fixed
-    top: 0
-    width: 100%
-    background: #fff
-    padding: 20px 30px 20px 75px
-    .switcher-lang
-      color: #000
-      li a
-        color: #000
-    .mobile-logo
-      display: inline-block!important
-      position: absolute
-      top: -6px
-      right: 0
-      opacity: 1
-      transition: all .5s
-      img
-        height: 40px
-
-  .custom-modal
-    transform: none
-    top: 0
-    left: 0
-    overflow-y: auto
-  .custom-modal form
-    width: 100%
-  .page-template-page-atmosfera .atm-controllers
-    position: relative
-    transform: none
-    padding: 30px 0
-  .active-menu
-    .top-bar
-      background: transparent!important
-    .mobile-logo
-      img
-        opacity: 0
-  .page-template-page-atmosfera
-    .site-content
-      padding-top: 67px
-
-
-@media(max-width: 390px)
-  .menu-bar .link-rezerv
-    bottom: 0
-    position: relative
-    transform: none
-    left: 0
-    margin-top: 20px

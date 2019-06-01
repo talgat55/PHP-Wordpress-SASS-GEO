@@ -1,54 +1,80 @@
+//
+// Footer
+//
 .site-footer
-  .wrap
-    position: relative
-    bottom: 0
-    left: 0
-    right: 0
-    background: #fff
-    padding: 40px 0 40px 0!important
-    font-family: $font_blacked_book_bold
-    font-size: 18px
-    color: #000
-    p
-      margin-bottom: 0
-      height: 50px
-      vertical-align: middle
-      display: table-cell
-    .soc-links
-      margin: 0 auto
-      padding: 10px 0
-      display: block
-      text-align: right
+  padding-top: 60px
+  .first-row
+    padding-bottom: 50px
+    border-bottom: 1px solid #E3E3E3
+    .content
+      .title
+        font-size: 24px
+        color: #313131
+        font-family: $font_bold
+        margin-top: 0
+        margin-bottom: 30px
 
+      #menu-main-footer
+        margin: 0
+        padding: 0
+        column-count: 2
+        li
+          list-style: none
 
+          a
+            text-decoration-line: underline
+            font-family: $font_regular
+            color: #313131
+            font-size: 18px
+            display: inline-block
+            padding: 12px 0
+            transition: all .3s
+            &:hover
+              color: $main_color
+              text-decoration: none
+
+    .footer-contact-block
+      margin: 0
+      padding: 0
       li
-        display: inline-block
+        list-style: none
         a
-          padding: 0 5px
-          transition: all .4s
+          font-size: 18px
+          font-family: $font_medium
           text-decoration: none
+          color: #313131
+          transition: all .3s
+          margin-bottom: 30px
+          display: inline-block
           &:hover
+            color: $main_color
             text-decoration: none
-            opacity: .5
+          &.email
+            color: $main_color
+            &:hover
+              color: $gray_color
 
-    .policy-footer-link
-      font-size: 16px
-      width: 225px
-      display: block
-      color: $main_color
-
+  .second-row
+    padding: 35px 0
+    .copyright
+      font-size: 18px
+      font-family: $font_regular
+      margin-bottom: 0
 
     .bootom-copyright
-      font-size: 16px
-      color: #000
-      padding: 14px 0
-      display: block
-.page-template-page-contacts
-  .site-footer
-    .wrap
-      position: absolute
+      color: #313131
+      font-family: $font_regular
+      font-size: 18px
+      transition: all .3s
+      span
+        font-family: $font_bold
+        color: $main_color
+        border-bottom: 1px solid
 
 
+      &:hover
+        opacity: .5
+        text-decoration: none
 
 
 

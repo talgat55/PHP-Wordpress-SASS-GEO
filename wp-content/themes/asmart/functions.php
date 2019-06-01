@@ -1,12 +1,5 @@
 <?php
 
-load_theme_textdomain('light', get_template_directory() . '/languages');
-
-
-/*
-* Add mobile detect
-*/
-require_once "inc/Mobile_Detect.php";
 
 /*
 * Register nav menu
@@ -46,7 +39,7 @@ function th_scripts()
 
     // Theme stylesheet.
     wp_enqueue_style('bootstrapcdn', get_theme_file_uri('/assets/css/bootstrap.min.css'), array(), '');
-    wp_enqueue_style('th-style', get_stylesheet_uri(), array(), '6');
+    wp_enqueue_style('th-style', get_stylesheet_uri(), array(), '1');
 
 
     wp_enqueue_style('fontawesome-all', get_theme_file_uri('/assets/css/fontawesome-all.css'), array(), '');
@@ -75,10 +68,11 @@ function th_scripts()
 
     }
 
-    wp_enqueue_style('main-style', get_theme_file_uri('/assets/css/style.css'), array(), '5');
+    wp_enqueue_style('main-style', get_theme_file_uri('/assets/css/style.css'), array(), '1');
 
 
-    wp_enqueue_script('jquery', get_theme_file_uri('/assets/js/jquery-3.2.1.min.js'), array(), '');
+    wp_enqueue_script('vue-dev', get_theme_file_uri('/assets/js/vue_dev.js'), array(), '');
+    wp_enqueue_script('vue-prod', get_theme_file_uri('/assets/js/vue_prod.js'), array(), '');
 
 
     if (is_home()) {
@@ -159,90 +153,36 @@ function post_type_docs()
 
 
 /*
-*  Rgister Post Type  atmosfera
+*  Register Post Type  partners
 */
 
-add_action('init', 'post_type_atmosfera');
+add_action('init', 'post_type_partners');
 
-function post_type_atmosfera()
+function post_type_partners()
 {
     $labels = array(
-        'name' => 'Атмосфера',
-        'singular_name' => 'Атмосфера',
-        'all_items' => 'Атмосфера',
-        'menu_name' => 'Атмосфера' // ссылка в меню в админке
+        'name' => 'Партнеры',
+        'singular_name' => 'Партнеры',
+        'all_items' => 'Партнеры',
+        'menu_name' => 'Партнеры' // ссылка в меню в админке
     );
     $args = array(
         'labels' => $labels,
         'public' => true,
         'menu_position' => 5,
         'has_archive' => true,
-        'query_var' => "media",
+        'query_var' => "partners",
         'supports' => array(
             'title',
             'editor',
             'thumbnail'
         )
     );
-    register_post_type('media', $args);
+    register_post_type('partners', $args);
 }
 
 
-/*
-*  Rgister Post Type  atmosfera
-*/
 
-add_action('init', 'post_type_menusc');
-
-function post_type_menusc()
-{
-    $labels = array(
-        'name' => 'Меню',
-        'singular_name' => 'Меню',
-        'all_items' => 'Меню',
-        'menu_name' => 'Меню' // ссылка в меню в админке
-    );
-    $args = array(
-        'labels' => $labels,
-        'public' => true,
-        'menu_position' => 5,
-        'has_archive' => true,
-        'query_var' => "menus",
-        'supports' => array(
-            'title',
-            'editor',
-            'thumbnail'
-        ),
-        'taxonomies' => array('category_menu')
-    );
-    register_post_type('menus', $args);
-}
-
-add_action('init', 'create_products_taxonomy', 0);
-function create_products_taxonomy()
-{
-// Labels part for the GUI
-    $labels = array(
-        'name' => _x('Разделы меню', 'light'),
-        'singular_name' => _x('Разделы меню', 'light'),
-        'search_items' => __('Поиск Разделы меню'),
-        'popular_items' => __('Разделы меню'),
-        'all_items' => __('Разделы меню'),
-        'parent_item' => null,
-        'parent_item_colon' => null,
-        'menu_name' => __('Разделы меню'),
-    );
-// Now register the non-hierarchical taxonomy like tag
-    register_taxonomy('category_menu', 'menus', array(
-        'hierarchical' => true,
-        'labels' => $labels,
-        'show_ui' => true,
-        'show_admin_column' => true,
-        'update_count_callback' => '_update_post_term_count',
-        'query_var' => true,
-        'rewrite' => array('slug' => 'category_menu'),
-    ));
-}
 
 /*
 *  Rgister Post Type Settings
@@ -261,25 +201,6 @@ if (function_exists('acf_add_options_page')) {
 }
 
 
-function get_latest_post_link()
-{
-    global $post;
-    $current_permalink = get_permalink();
-    $placeholder = $post;
-    $args = array(
-        'numberposts' => 1,
-        'offset' => 0,
-        'orderby' => 'post_date',
-        'order' => 'DESC',
-        'post_status' => 'publish');
-    $sorted_posts = get_posts($args);
-    $permalink = get_permalink($sorted_posts[0]->ID);
-    if ($permalink == $current_permalink)
-        return;
-    $post = $placeholder;
-    $latest_link_html = $permalink;
-    return $latest_link_html;
-}
 
 function post_pagination()
 {
@@ -355,41 +276,6 @@ function wpbeginner_numeric_posts_nav() {
 
 }
 
-//
-//  Link Last News
-//
-if (!is_admin()) {
-    // Hook in early to modify the menu
-    // This is before the CSS "selected" classes are calculated
-    add_filter('wp_get_nav_menu_items', 'replace_placeholder_nav_menu_item_with_latest_post', 10, 3);
-}
-
-// Replaces a custom URL placeholder with the URL to the latest post
-function replace_placeholder_nav_menu_item_with_latest_post($items, $menu, $args)
-{
-
-    // Loop through the menu items looking for placeholder(s)
-    foreach ($items as $item) {
-
-        // Is this the placeholder we're looking for?
-        if ('#latestpost' != $item->url)
-            continue;
-
-        // Get the latest post
-        $latestpost = get_posts(array(
-            'numberposts' => 1,
-        ));
-
-        if (empty($latestpost))
-            continue;
-
-        // Replace the placeholder with the real URL
-        $item->url = get_permalink($latestpost[0]->ID);
-    }
-
-    // Return the modified (or maybe unmodified) menu items array
-    return $items;
-}
 
 
 function redirect_login_page()
@@ -589,8 +475,16 @@ function add_new_user_function($cf7)
 
     }
 }
-add_filter('upload_mimes', 'custom_upload_mimes');
-function custom_upload_mimes ( $existing_mimes=array() ) {
-    $existing_mimes['svg'] = 'image/svg+xml';
-    return $existing_mimes;
+
+
+
+/**
+ * Replace symbols for phone
+ * @param $phone
+ * @return mixed
+ */
+function pregPhone($phone){
+
+    return  str_replace(['+','(', ')' , '-' , ' ' , '<span>', '</span>' ], "", $phone);
+
 }

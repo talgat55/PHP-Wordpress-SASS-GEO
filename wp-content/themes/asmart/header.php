@@ -11,15 +11,15 @@
         ?>
     </title>
     <meta charset="<?php bloginfo('charset'); ?>">
-    <meta name="yandex-verification" content="b19eaf226c9b90c0" />
+    <meta name="yandex-verification" content="b19eaf226c9b90c0"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <link rel="profile" href="http://gmpg.org/xfn/11">
-    <link rel="shortcut icon" href="<?php echo get_theme_file_uri('favicon.png?v=1.1') ?>"  type="image/x-icon"/>
+    <link rel="shortcut icon" href="<?php echo get_theme_file_uri('favicon.png?v=1.1') ?>" type="image/x-icon"/>
 
     <?php wp_head(); ?>
     <script type='text/javascript'>
         /* <![CDATA[ */
-        var myajax = {"url":"<?=admin_url('admin-ajax.php'); ?>"};
+        var myajax = {"url": "<?=admin_url('admin-ajax.php'); ?>"};
         /* ]]> */
     </script>
 
@@ -28,87 +28,79 @@
 
 
 <body <?php body_class(); ?>>
-<?php if (is_home()) {  ?>
-<div id="hola">
-    <div id="preloader">
-        <div class="preloader-logo">
-            <img  src="<?php echo get_theme_file_uri('/assets/images/Logo.png') ?>" alt="логотип">
-        </div>
-        <div class="preloader-bar">
-            <span></span>
-            <span></span>
-        </div>
-        <a href="#" class="close-preloader">
-            <?php  _e('Закрыть прелоадер', 'light'); ?>
-        </a>
-    </div>
-</div>
-<?php  } ?>
-<div id="page" class="site  <?=get_locale(); ?>">
+<?php if (is_home()) { ?>
+    <!--<div id="hola">-->
+    <!--    <div id="preloader">-->
+    <!--        <div class="preloader-logo">-->
+    <!--            <img  src="--><?php //echo get_theme_file_uri('/assets/images/Logo.png') ?><!--" alt="логотип">-->
+    <!--        </div>-->
+    <!--        <div class="preloader-bar">-->
+    <!--            <span></span>-->
+    <!--            <span></span>-->
+    <!--        </div>-->
+    <!--        <a href="#" class="close-preloader">-->
+    <!--            --><?php // _e('Закрыть прелоадер', 'light'); ?>
+    <!--        </a>-->
+    <!--    </div>-->
+    <!--</div>-->
+<?php } ?>
+<div id="page" class="site  <?= get_locale(); ?>">
 
-    <header id="masthead" class="site-header clearfix">
+    <header class="site-header clearfix">
+        <div class="menu-bar">
+            <a href="<?= home_url(ChangeUrl()); ?>" class="logo">
+                <img src="<?php echo get_theme_file_uri('/assets/images/logo.png') ?>" alt="логотип">
+            </a>
+            <?php wp_nav_menu('menu_id=menu-main&container=nav&menu_class=top-main-container clearfix&theme_location=top_menu'); ?>
 
-        <div class="top-bar">
-            <div class="container">
+            <a href="#" class="link-presentation">
+                Презентация о компании
+            </a>
+        </div>
+    </header><!-- #masthead -->
+
+
+    <div class="site-content-contain">
+        <div id="top-bar">
+            <?php
+            $phone = get_field('phone_main', 'option');
+            $email = get_field('email_main', 'option');
+            $redyPhone = $phone ? pregPhone($phone) : '';
+            ?>
+            <div class="container-custom">
                 <div class="row">
-                    <div class="col-sm-6 col-xs-6">
-                        <div class="row">
-                            <ul class="switcher-lang">
-                                <?php
-                                if (get_locale() == 'en_US') {
-                                    $classEng = 'class="active"';
-                                    $classRu = '';
-                                } else {
-                                    $classRu = 'class="active"';
-                                    $classEng = '';
-                                }
+                    <div class="first-column col-sm-6 col-xs-12">
+                            <div class="phone-block ">
+                                <div class="img-block">
+                                    <img src="<?php echo get_theme_file_uri('/assets/images/phone.png') ?>"
+                                         alt="иконка">
+                                </div>
+                                <div class="content">
+                                    <a href="tel:<?= $redyPhone; ?>" class="link-clean"><?= $phone; ?></a>
+                                </div>
+                            </div>
+                            <div class="email-block  ">
+                                <div class="img-block">
+                                    <img src="<?php echo get_theme_file_uri('/assets/images/mail.png') ?>" alt="иконка">
+                                </div>
+                                <div class="content">
+                                    <a href="mailto:<?= $email; ?>" class="link-clean"><?= $email; ?></a>
+                                </div>
+                            </div>
 
-                                ?>
-                                <li>
-                                    <a href="#"  <?=$classRu;?>  data-type="ru" >
-                                        рус
-                                    </a>
-                                </li>
-                                /
-                                 <li>
-                                    <a href="#"  <?=$classEng;?> data-type="en" >
-                                        eng
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </div>
                     </div>
-                     <div class="col-sm-6 col-xs-6">
-                        <div class="row text-right">
+                    <div class="col-sm-6 col-xs-12">
+                        <a href="#" class="link link-call">
+                            Заказать звонок
+                        </a>
 
-                             <a href="<?=home_url(ChangeUrl()); ?>" class="mobile-logo" style="display: none;" title="Главная страница">
-                                    <img  src="<?php echo get_theme_file_uri('/assets/images/logo-mobile.png') ?>" alt="логотип">
-                             </a>
-                        </div>
                     </div>
 
                 </div>
+
             </div>
 
+
         </div>
-        <a href="#" class="menu-link">
-            <i class="fas fa-th-large"></i>
-            <i class="fas fa-times"></i>
-        </a>
 
-    </header><!-- #masthead -->
-    <div class="menu-bar">
-        <a href="<?= home_url(ChangeUrl()); ?>" class="logo">
-            <img  src="<?php echo get_theme_file_uri('/assets/images/Logo.png') ?>" alt="логотип">
-        </a>
-        <nav>
-            <?php wp_nav_menu('menu_id=menu-main&menu_class=top-main-container clearfix&theme_location=top_menu'); ?>
-        </nav>
-        <a href="<?=ChangeUrlForPages('booking');?>" class="link-rezerv">
-            <?php  _e('Зарезервировать', 'light'); ?>
-        </a>
-    </div>
-
-    <div class="site-content-contain">
         <div id="content" class="site-content">
