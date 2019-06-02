@@ -71,9 +71,13 @@ function th_scripts()
     wp_enqueue_style('main-style', get_theme_file_uri('/assets/css/style.css'), array(), '1');
 
 
-    wp_enqueue_script('vue-dev', get_theme_file_uri('/assets/js/vue_dev.js'), array(), '');
+   // wp_enqueue_script('vue-dev', get_theme_file_uri('/assets/js/vue_dev.js'), array(), '');
     wp_enqueue_script('vue-prod', get_theme_file_uri('/assets/js/vue_prod.js'), array(), '');
+    if (is_page_template('page-vacancies.php')) {
 
+        wp_enqueue_script('accordion-vue', get_theme_file_uri('/assets/js/components/accordion/accordion.js'), array(), '', true);
+
+    }
 
     if (is_home()) {
         wp_enqueue_script('velocity', get_theme_file_uri('/assets/js/velocity.min.js'), array(), '');
@@ -111,8 +115,8 @@ function th_scripts()
         wp_enqueue_script('lg-fullscreen.min', get_theme_file_uri('/assets/js/lg-fullscreen.min.js'), array(), '');
         wp_enqueue_script('lg-thumbnail.min', get_theme_file_uri('/assets/js/lg-thumbnail.min.js'), array(), '');
     }
-    wp_enqueue_script('jquery.pagepiling.min', get_theme_file_uri('/assets/js/jquery.pagepiling.min.js'), array(), '1');
-    wp_enqueue_script('default', get_theme_file_uri('/assets/js/default.js'), array(), '1.2');
+//    wp_enqueue_script('jquery.pagepiling.min', get_theme_file_uri('/assets/js/jquery.pagepiling.min.js'), array(), '1');
+//    wp_enqueue_script('default', get_theme_file_uri('/assets/js/default.js'), array(), '1.2');
 
 
 }
@@ -183,6 +187,35 @@ function post_type_partners()
 
 
 
+/*
+*  Register Post Type  partners
+*/
+
+add_action('init', 'post_type_vacancies');
+
+function post_type_vacancies()
+{
+    $labels = array(
+        'name' => 'Вакансии',
+        'singular_name' => 'Вакансии',
+        'all_items' => 'Вакансии',
+        'menu_name' => 'Вакансии' // ссылка в меню в админке
+    );
+    $args = array(
+        'labels' => $labels,
+        'public' => true,
+        'menu_position' => 5,
+        'has_archive' => true,
+        'query_var' => "vacancies",
+        'supports' => array(
+            'title',
+            'editor',
+            'thumbnail'
+        )
+    );
+    register_post_type('vacancies', $args);
+}
+
 
 /*
 *  Rgister Post Type Settings
@@ -196,8 +229,6 @@ if (function_exists('acf_add_options_page')) {
         'menu_slug' => 'theme-options',
         'capability' => 'edit_posts'
     ));
-
-
 }
 
 
@@ -277,204 +308,54 @@ function wpbeginner_numeric_posts_nav() {
 }
 
 
+//
+//function redirect_login_page()
+//{
+//    $login_page = home_url('/login-page/'); //Укажите URL страницы входа, которую создали в админке
+//    $page_viewed = basename($_SERVER['REQUEST_URI']);
+//    if ($page_viewed == "wp-login.php" && $_SERVER['REQUEST_METHOD'] == 'GET') {
+//        wp_redirect($login_page);
+//        exit;
+//    }
+//}
+//
+//add_action('init', 'redirect_login_page');
+//
+//function login_failed()
+//{
+//    $login_page = home_url('/login-page/'); //Укажите URL страницы входа, которую создали в админке
+//    wp_redirect($login_page . '?login=failed');
+//    exit;
+//}
+//
+//add_action('wp_login_failed', 'login_failed');
+//
+//function verify_username_password($user, $username, $password)
+//{
+//    $login_page = home_url('/login-page/'); //Укажите URL страницы входа, которую создали в админке
+//    if ($username == "" || $password == "") {
+//        wp_redirect($login_page . "?login=empty");
+//        exit;
+//    }
+//}
+//
+//add_filter('authenticate', 'verify_username_password', 1, 3);
+//function admin_default_page()
+//{
+//    return '/wp-admin';
+//}
+//
+//add_filter('login_redirect', 'admin_default_page');
+//function logout_page()
+//{
+//    $login_page = home_url('/login-page/'); //Укажите URL страницы входа, которую создали в админке
+//    wp_redirect($login_page . "?login=false");
+//    exit;
+//}
+//
+//add_action('wp_logout', 'logout_page');
+//
 
-function redirect_login_page()
-{
-    $login_page = home_url('/login-page/'); //Укажите URL страницы входа, которую создали в админке
-    $page_viewed = basename($_SERVER['REQUEST_URI']);
-    if ($page_viewed == "wp-login.php" && $_SERVER['REQUEST_METHOD'] == 'GET') {
-        wp_redirect($login_page);
-        exit;
-    }
-}
-
-add_action('init', 'redirect_login_page');
-
-function login_failed()
-{
-    $login_page = home_url('/login-page/'); //Укажите URL страницы входа, которую создали в админке
-    wp_redirect($login_page . '?login=failed');
-    exit;
-}
-
-add_action('wp_login_failed', 'login_failed');
-
-function verify_username_password($user, $username, $password)
-{
-    $login_page = home_url('/login-page/'); //Укажите URL страницы входа, которую создали в админке
-    if ($username == "" || $password == "") {
-        wp_redirect($login_page . "?login=empty");
-        exit;
-    }
-}
-
-add_filter('authenticate', 'verify_username_password', 1, 3);
-function admin_default_page()
-{
-    return '/wp-admin';
-}
-
-add_filter('login_redirect', 'admin_default_page');
-function logout_page()
-{
-    $login_page = home_url('/login-page/'); //Укажите URL страницы входа, которую создали в админке
-    wp_redirect($login_page . "?login=false");
-    exit;
-}
-
-add_action('wp_logout', 'logout_page');
-
-
-/**
- * Return url
- * @return string
- */
-function ChangeUrl()
-{
-    if (get_locale() == 'en_US') {
-        $addpath = '/en';
-    } else {
-        $addpath = '';
-    }
-    return $addpath;
-}
-
-/**
- * Return url for other pages
- * @return string
- */
-function ChangeUrlForPages($type)
-{
-
-    if (empty($type)) {
-        return;
-    }
-    if (get_locale() == 'en_US') {
-        $locale = true;
-    } else {
-        $locale = false;
-    }
-
-    if ($type == 'news') {
-
-        $addpath = $locale ? '/en/archive-news/page/2/' : '/arhiv-novostej/page/2/';
-
-    } else if ($type == 'booking') {
-
-        $addpath = $locale ? '/en/booking-2/' : '/booking/';
-
-    } else if ($type == 'atmosfera') {
-
-        $addpath = $locale ? '/en/atmosphere' : '/atmosfera';
-
-    } else if ($type == 'privacy-policy') {
-
-        $addpath = $locale ? '/en/privacy-policy-2' : '/privacy-policy';
-
-    }
-
-    return $addpath;
-}
-
-/**
- * Return contact form
- * @param $type
- * @return string|void
- */
-function ChangeContactFrom($type)
-{
-
-    if (empty($type)) {
-        return;
-    }
-    if (get_locale() == 'en_US') {
-        $locale = true;
-    } else {
-        $locale = false;
-    }
-
-    if ($type == 'booking') {
-
-        $form = $locale ? do_shortcode('[contact-form-7 id="283" title="Booking En"  html_class="form contact-form-booking"]') : do_shortcode('[contact-form-7 id="76" title="бронирование"  html_class="form contact-form-booking"]');
-
-    } else {
-
-        $form = $locale ? do_shortcode('[contact-form-7 id="284" title="Написать нам En"   html_class="form contact-form-about"]') : do_shortcode('[contact-form-7 id="225" title="Написать нам"   html_class="form contact-form-about"]');
-
-    }
-
-    return $form;
-}
-
-/**
- * Return  fields value for slider in home page
- * @param $type
- * @return mixed|void|null
- */
-
-function returnTextLang($type)
-{
-    if (empty($type)) {
-        return;
-    }
-    if (get_locale() == 'en_US') {
-        $locale = true;
-    } else {
-        $locale = false;
-    }
-
-    if ($type == 'title-one') {
-
-        $value = $locale ? get_field('title_one_en') : get_field('title_one');
-
-    } else if ($type == 'text-one') {
-
-        $value = $locale ? get_field('text_one_en') : get_field('text_one');
-
-    }else if ($type == 'title-two') {
-
-        $value = $locale ? get_field('title_two_en') : get_field('title_two');
-
-    }else if ($type == 'text-two') {
-
-        $value = $locale ? get_field('text_two_en') : get_field('text_two');
-
-    }else if ($type == 'link-one') {
-
-        $value = $locale ? get_field('link_one_en') : get_field('link_one');
-
-    }else if ($type == 'link-two') {
-
-        $value = $locale ? get_field('link_two_en') : get_field('link_two');
-
-    }
-
-
-    return $value;
-}
-
-/**
- * Add new user
- * @param $contact_form
- */
-add_action("wpcf7_before_send_mail", "add_new_user_function");
-
-function add_new_user_function($cf7)
-{
-    $submission = WPCF7_Submission::get_instance();
-    if($submission) {
-            $posted_data = $submission->get_posted_data();
-            if($posted_data['accept-subscribe']){
-                $name = isset($posted_data['text-name']) ? $posted_data['text-name'] : '';
-                $email = isset($posted_data['email-490']) ? $posted_data['email-490'] : '';
-
-                $random_password = wp_generate_password( 12 );
-                wp_create_user( $name, $random_password, $email );
-
-            }
-
-    }
-}
 
 
 
@@ -487,4 +368,196 @@ function pregPhone($phone){
 
     return  str_replace(['+','(', ')' , '-' , ' ' , '<span>', '</span>' ], "", $phone);
 
+}
+
+
+
+/*
+ * * Breadscrumb
+ */
+
+function dimox_breadcrumbs()
+{
+
+    /* === ОПЦИИ === */
+    $text['home'] = 'Главная'; // текст ссылки "Главная"
+    $text['category'] = '%s'; // текст для страницы рубрики
+    $text['search'] = 'Результаты поиска по запросу "%s"'; // текст для страницы с результатами поиска
+    $text['tag'] = 'Записи с тегом "%s"'; // текст для страницы тега
+    $text['author'] = 'Статьи автора %s'; // текст для страницы автора
+    $text['404'] = 'Ошибка 404'; // текст для страницы 404
+    $text['page'] = 'Страница %s'; // текст 'Страница N'
+    $text['cpage'] = 'Страница комментариев %s'; // текст 'Страница комментариев N'
+
+    $wrap_before = '<div class="breadcrumbs main flex-container"  itemscope itemtype="http://schema.org/BreadcrumbList">'; // открывающий тег обертки
+    $wrap_after = '</div><!-- .breadcrumbs -->'; // закрывающий тег обертки
+    $sep = '/'; // разделитель между "крошками"
+    $sep_before = '<span class="sep">'; // тег перед разделителем
+    $sep_after = '</span>'; // тег после разделителя
+    $show_home_link = 1; // 1 - показывать ссылку "Главная", 0 - не показывать
+    $show_on_home = 0; // 1 - показывать "хлебные крошки" на главной странице, 0 - не показывать
+    $show_current = 1; // 1 - показывать название текущей страницы, 0 - не показывать
+    $before = '<span class="current">'; // тег перед текущей "крошкой"
+    $after = '</span>'; // тег после текущей "крошки"
+    /* === КОНЕЦ ОПЦИЙ === */
+
+    global $post;
+    $home_url = home_url('/');
+    $link_before = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
+    $link_after = '</li>';
+    $link_attr = ' itemprop="item"';
+    $link_in_before = '<span itemprop="name">';
+    $link_in_after = '</span>';
+    $link = $link_before . '<a href="%1$s"' . $link_attr . '>' . $link_in_before . '%2$s' . $link_in_after . '</a>' . $link_after;
+    $frontpage_id = get_option('page_on_front');
+    $parent_id = ($post) ? $post->post_parent : '';
+    $sep = ' ' . $sep_before . $sep . $sep_after . ' ';
+    $home_link = $link_before . '<a href="' . $home_url . '"' . $link_attr . ' class="home">' . $link_in_before . $text['home'] . $link_in_after . '</a>' . $link_after;
+
+    if (is_home() || is_front_page()) {
+
+        if ($show_on_home) echo $wrap_before . $home_link . $wrap_after;
+
+    } else {
+
+        echo $wrap_before;
+        if ($show_home_link) echo $home_link;
+
+        if (is_category()) {
+            $cat = get_category(get_query_var('cat'), false);
+            if ($cat->parent != 0) {
+                $cats = get_category_parents($cat->parent, TRUE, $sep);
+                $cats = preg_replace("#^(.+)$sep$#", "$1", $cats);
+                $cats = preg_replace('#<a([^>]+)>([^<]+)<\/a>#', $link_before . '<a$1' . $link_attr . '>' . $link_in_before . '$2' . $link_in_after . '</a>' . $link_after, $cats);
+                if ($show_home_link) echo $sep;
+                echo $cats;
+            }
+            if (get_query_var('paged')) {
+                $cat = $cat->cat_ID;
+                echo $sep . sprintf($link, get_category_link($cat), get_cat_name($cat)) . $sep . $before . sprintf($text['page'], get_query_var('paged')) . $after;
+            } else {
+                if ($show_current) echo $sep . $before . sprintf($text['category'], single_cat_title('', false)) . $after;
+            }
+
+        } elseif (is_search()) {
+            if (have_posts()) {
+                if ($show_home_link && $show_current) echo $sep;
+                if ($show_current) echo $before . sprintf($text['search'], get_search_query()) . $after;
+            } else {
+                if ($show_home_link) echo $sep;
+                echo $before . sprintf($text['search'], get_search_query()) . $after;
+            }
+
+        } elseif (is_day()) {
+            if ($show_home_link) echo $sep;
+            echo sprintf($link, get_year_link(get_the_time('Y')), get_the_time('Y')) . $sep;
+            echo sprintf($link, get_month_link(get_the_time('Y'), get_the_time('m')), get_the_time('F'));
+            if ($show_current) echo $sep . $before . get_the_time('d') . $after;
+
+        } elseif (is_month()) {
+            if ($show_home_link) echo $sep;
+            echo sprintf($link, get_year_link(get_the_time('Y')), get_the_time('Y'));
+            if ($show_current) echo $sep . $before . get_the_time('F') . $after;
+
+        } elseif (is_year()) {
+            if ($show_home_link && $show_current) echo $sep;
+            if ($show_current) echo $before . get_the_time('Y') . $after;
+
+        } elseif (is_single() && !is_attachment()) {
+            if ($show_home_link) echo $sep;
+            if (get_post_type() != 'post') {
+                $post_type = get_post_type_object(get_post_type());
+                $slug = $post_type->rewrite;
+                printf($link, $home_url . $slug['slug'] . '/', $post_type->labels->singular_name);
+                if ($show_current) echo $sep . $before . get_the_title() . $after;
+            } else {
+                $cat = get_the_category();
+                $cat = $cat[0];
+                $cats = get_category_parents($cat, TRUE, $sep);
+                if (!$show_current || get_query_var('cpage')) $cats = preg_replace("#^(.+)$sep$#", "$1", $cats);
+                $cats = preg_replace('#<a([^>]+)>([^<]+)<\/a>#', $link_before . '<a$1' . $link_attr . '>' . $link_in_before . '$2' . $link_in_after . '</a>' . $link_after, $cats);
+                echo $cats;
+                if (get_query_var('cpage')) {
+                    echo $sep . sprintf($link, get_permalink(), get_the_title()) . $sep . $before . sprintf($text['cpage'], get_query_var('cpage')) . $after;
+                } else {
+                    if ($show_current) echo $before . get_the_title() . $after;
+                }
+            }
+
+            // custom post type
+        } elseif (!is_single() && !is_page() && get_post_type() != 'post' && !is_404()) {
+            $post_type = get_post_type_object(get_post_type());
+            if (get_query_var('paged')) {
+                echo $sep . sprintf($link, get_post_type_archive_link($post_type->name), $post_type->label) . $sep . $before . sprintf($text['page'], get_query_var('paged')) . $after;
+            } else {
+                if ($show_current) echo $sep . $before . $post_type->label . $after;
+            }
+
+        } elseif (is_attachment()) {
+            if ($show_home_link) echo $sep;
+            $parent = get_post($parent_id);
+            $cat = get_the_category($parent->ID);
+            $cat = $cat[0];
+            if ($cat) {
+                $cats = get_category_parents($cat, TRUE, $sep);
+                $cats = preg_replace('#<a([^>]+)>([^<]+)<\/a>#', $link_before . '<a$1' . $link_attr . '>' . $link_in_before . '$2' . $link_in_after . '</a>' . $link_after, $cats);
+                echo $cats;
+            }
+            printf($link, get_permalink($parent), $parent->post_title);
+            if ($show_current) echo $sep . $before . get_the_title() . $after;
+
+        } elseif (is_page() && !$parent_id) {
+            if ($show_current) echo $sep . $before . get_the_title() . $after;
+
+        } elseif (is_page() && $parent_id) {
+            if ($show_home_link) echo $sep;
+            if ($parent_id != $frontpage_id) {
+                $breadcrumbs = array();
+                while ($parent_id) {
+                    $page = get_page($parent_id);
+                    if ($parent_id != $frontpage_id) {
+                        $breadcrumbs[] = sprintf($link, get_permalink($page->ID), get_the_title($page->ID));
+                    }
+                    $parent_id = $page->post_parent;
+                }
+                $breadcrumbs = array_reverse($breadcrumbs);
+                for ($i = 0; $i < count($breadcrumbs); $i++) {
+                    echo $breadcrumbs[$i];
+                    if ($i != count($breadcrumbs) - 1) echo $sep;
+                }
+            }
+            if ($show_current) echo $sep . $before . get_the_title() . $after;
+
+        } elseif (is_tag()) {
+            if (get_query_var('paged')) {
+                $tag_id = get_queried_object_id();
+                $tag = get_tag($tag_id);
+                echo $sep . sprintf($link, get_tag_link($tag_id), $tag->name) . $sep . $before . sprintf($text['page'], get_query_var('paged')) . $after;
+            } else {
+                if ($show_current) echo $sep . $before . sprintf($text['tag'], single_tag_title('', false)) . $after;
+            }
+
+        } elseif (is_author()) {
+            global $author;
+            $author = get_userdata($author);
+            if (get_query_var('paged')) {
+                if ($show_home_link) echo $sep;
+                echo sprintf($link, get_author_posts_url($author->ID), $author->display_name) . $sep . $before . sprintf($text['page'], get_query_var('paged')) . $after;
+            } else {
+                if ($show_home_link && $show_current) echo $sep;
+                if ($show_current) echo $before . sprintf($text['author'], $author->display_name) . $after;
+            }
+
+        } elseif (is_404()) {
+            if ($show_home_link && $show_current) echo $sep;
+            if ($show_current) echo $before . $text['404'] . $after;
+
+        } elseif (has_post_format() && !is_singular()) {
+            if ($show_home_link) echo $sep;
+            echo get_post_format_string(get_post_format());
+        }
+
+        echo $wrap_after;
+
+    }
 }

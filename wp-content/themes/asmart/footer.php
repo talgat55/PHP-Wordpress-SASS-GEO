@@ -5,7 +5,7 @@ $email = get_field('email_main', 'option');
 $redyPhone = $phone ? pregPhone($phone) : '';
 ?>
 <footer class="site-footer">
-    <div class="container ">
+    <div class="container-custom  ">
         <div class="first-row">
             <div class="row">
 

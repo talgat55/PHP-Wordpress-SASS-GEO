@@ -179,22 +179,33 @@ get_header(); ?>
         <div class="container-custom relative">
             <div class="row">
                 <p class="description">
-                    <span>Промоакция, в рамках сегодняшних воззрений,</span> традиционно искажает контент. Согласно предыдущему,
+                    <span>Промоакция, в рамках сегодняшних воззрений,</span> традиционно искажает контент. Согласно
+                    предыдущему,
                     соц-дем характеристика аудитории восстанавливает портрет потребителя. Пак-шот экономит фактор
                     коммуникации. <span>Рейтинг,</span> безусловно, версифицирован.<br>
-                    <span> Практика однозначно показывает,</span> что спонсорство стабилизирует традиционный канал. <span>Пресс-клиппинг</span>
+                    <span> Практика однозначно показывает,</span> что спонсорство стабилизирует традиционный канал.
+                    <span>Пресс-клиппинг</span>
                     основан на тщательном анализе данных. Медиамикс индуцирует пресс-клиппинг, оптимизируя бюджеты.
                 </p>
             </div>
         </div>
     </section>
     <section class="map-block relative">
-        <img  src="<?php echo get_theme_file_uri('/assets/images/bg-four.jpg') ?>"   alt="карта">
+        <img src="<?php echo get_theme_file_uri('/assets/images/bg-four.jpg') ?>" alt="карта">
 
-        <div class="container-custom relative">
-            <div class="row">
+        <div class="content-block">
+            <div class="container-custom relative">
+                <div class="row">
+                    <h2 class="sub-title white-title">
+                        География компании
+                    </h2>
+                    <p class="description">
+                        Рекламный блок упорядочивает бренд,<br> осознав маркетинг как часть производства.<br> Правда, специалисты отмечают, что<br> промоакция вырождена.
 
+                    </p>
+                </div>
             </div>
         </div>
+
     </section>
 <?php get_footer();

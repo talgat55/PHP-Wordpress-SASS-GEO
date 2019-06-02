@@ -11,6 +11,7 @@ $gray_color: #333
   font-family: 'Gotham Pro Bold'
   src: url('GothaProBol.woff') format('woff'),
   url('GothaProBol.ttf') format('truetype')
+  font-display: swap
   font-weight: normal
   font-style: normal
 
@@ -19,6 +20,7 @@ $gray_color: #333
   src: url('GothaProLig.woff') format('woff'),
   url('GothaProLig.ttf') format('truetype')
   font-weight: normal
+  font-display: swap
   font-style: normal
 
 
@@ -28,6 +30,7 @@ $gray_color: #333
   src: url('GothaProMed.woff') format('woff'),
   url('GothaProMed.ttf') format('truetype')
   font-weight: normal
+  font-display: swap
   font-style: normal
 
 
@@ -36,6 +39,7 @@ $gray_color: #333
   src: url('GothaProReg.woff') format('woff'),
   url('GothaProReg.ttf') format('truetype')
   font-weight: normal
+  font-display: swap
   font-style: normal
 
 @mixin placeholder
@@ -58,6 +62,10 @@ $gray_color: #333
   color: #fff
   font-family: $font_bold
   margin-top: 175px
+  &.black
+    color: #313131
+    margin-top: 30px
+    margin-bottom: 43px
 
 .site-content-contain
   margin-left: 340px
@@ -66,6 +74,12 @@ $gray_color: #333
 
 @mixin clearfix()
   &::after
+    display: block
+    content: ""
+    clear: both
+
+@mixin clearfix_before()
+  &::before
     display: block
     content: ""
     clear: both
@@ -162,6 +176,45 @@ a.link-alt
   -webkit-align-items: center
   -ms-flex-align: center
   align-items: center
+
+
+
+//
+// Breadscrumb
+//
+.breadcrumbs
+  padding: 60px 0 0 0
+  margin: 0
+  li
+    list-style: none
+    span,
+    a
+      font-family: $font_regular
+      color: #000
+      text-decoration: underline
+    span.current
+      color: #9e9c9c
+      text-decoration: none
+
+  .sep
+    padding: 0 5px
+
+
+
+
+#primary
+  position: relative
+  margin-bottom: 80px
+  &:before
+    background: url(../images/bg-main.png)
+    background-repeat: no-repeat!important
+    display: block
+    content: ""
+    width: 583px
+    height: 128px
+    position: absolute
+    top: -5px
+    left: 0
 
 
 

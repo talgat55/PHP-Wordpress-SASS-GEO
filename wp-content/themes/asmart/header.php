@@ -14,13 +14,14 @@
     <meta name="yandex-verification" content="b19eaf226c9b90c0"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <link rel="profile" href="http://gmpg.org/xfn/11">
-    <link rel="shortcut icon" href="<?php echo get_theme_file_uri('favicon.png?v=1.1') ?>" type="image/x-icon"/>
+<!--    <link rel="shortcut icon" href="--><?php //echo get_theme_file_uri('favicon.png?v=1.1') ?><!--" type="image/x-icon"/>-->
 
     <?php wp_head(); ?>
     <script type='text/javascript'>
         /* <![CDATA[ */
         var myajax = {"url": "<?=admin_url('admin-ajax.php'); ?>"};
         /* ]]> */
+
     </script>
 
 
@@ -28,6 +29,7 @@
 
 
 <body <?php body_class(); ?>>
+
 <?php if (is_home()) { ?>
     <!--<div id="hola">-->
     <!--    <div id="preloader">-->
@@ -48,7 +50,7 @@
 
     <header class="site-header clearfix">
         <div class="menu-bar">
-            <a href="<?= home_url(ChangeUrl()); ?>" class="logo">
+            <a href="<?= home_url(); ?>" class="logo">
                 <img src="<?php echo get_theme_file_uri('/assets/images/logo.png') ?>" alt="логотип">
             </a>
             <?php wp_nav_menu('menu_id=menu-main&container=nav&menu_class=top-main-container clearfix&theme_location=top_menu'); ?>
