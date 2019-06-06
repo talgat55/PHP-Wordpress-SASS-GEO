@@ -23,6 +23,7 @@ if (function_exists('register_nav_menus')) {
 add_theme_support('post-thumbnails');
 add_image_size('product-item', 244, 300, true);
 add_image_size('event-image', 370, 310, true);
+add_image_size('news-image', 320, 205, true);
 
 /**
  * Enqueue scripts and styles.
@@ -30,7 +31,7 @@ add_image_size('event-image', 370, 310, true);
 function th_scripts()
 {
 
-    if (is_page_template('page-atmosfera.php') || is_home() || is_page_template('page-menu.php')) {
+    if (is_page_template('page-about.php') || is_home() || is_page_template('page-menu.php')) {
 
         $slick = true;
     } else {
@@ -49,29 +50,20 @@ function th_scripts()
 
     wp_enqueue_style('normalize', get_theme_file_uri('/assets/css/normalize.min.css'), array(), '');
 
-    if (is_home()) {
-        wp_enqueue_style('jquery.pagepiling', get_theme_file_uri('/assets/css/jquery.pagepiling.css'), array(), '');
 
-    }
-    if (is_page_template('page-booking.php')) {
 
-        wp_enqueue_style('datepicker.min.css', get_theme_file_uri('/assets/css/datepicker.min.css'), array(), '');
-
-    }
 
     if ($slick) {
 
         wp_enqueue_style('slick', get_theme_file_uri('/assets/css/slick.css'), array(), '1.0');
         wp_enqueue_style('slick-theme', get_theme_file_uri('/assets/css/slick-theme.css'), array(), '');
-        wp_enqueue_style('lg-transitions', get_theme_file_uri('/assets/css/lg-transitions.css'), array(), '');
-        wp_enqueue_style('lightgallery', get_theme_file_uri('/assets/css/lightgallery.css'), array(), '');
 
     }
 
     wp_enqueue_style('main-style', get_theme_file_uri('/assets/css/style.css'), array(), '1');
 
 
-   // wp_enqueue_script('vue-dev', get_theme_file_uri('/assets/js/vue_dev.js'), array(), '');
+    // wp_enqueue_script('vue-dev', get_theme_file_uri('/assets/js/vue_dev.js'), array(), '');
     wp_enqueue_script('vue-prod', get_theme_file_uri('/assets/js/vue_prod.js'), array(), '');
     if (is_page_template('page-vacancies.php')) {
 
@@ -79,42 +71,38 @@ function th_scripts()
 
     }
 
-    if (is_home()) {
-        wp_enqueue_script('velocity', get_theme_file_uri('/assets/js/velocity.min.js'), array(), '');
-        wp_enqueue_script('velocity.ui.min', get_theme_file_uri('/assets/js/velocity.ui.min.js'), array(), '');
+    if (is_page_template('page-news.php')) {
+        wp_enqueue_script('axios', get_theme_file_uri('/assets/js/axios.min.js'), array(), '', true);
+        wp_enqueue_script('accordion-vue', get_theme_file_uri('/assets/js/components/news/load-more.js'), array(), '', true);
+
+
     }
 
+    wp_enqueue_script('menu', get_theme_file_uri('/assets/js/components/menu/menu.js'), array(), '', true);
 
     if (is_page_template('page-contacts.php')) {
-        if (get_locale() == 'en_US') {
-            $lang = 'en';
-        } else {
-            $lang = 'ru';
-        }
-        wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDkewQZi7iY6eOtlXajXXHFWHECGYWqfMs&language=' . $lang, array(), '2');
 
+        wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDkewQZi7iY6eOtlXajXXHFWHECGYWqfMs&language=ru', array(), '2');
+        wp_enqueue_script('maps', get_theme_file_uri('/assets/js/maps.js'), array(), '');
 
     }
 
-    if (is_page_template('page-booking.php') || is_page_template('page-contacts.php')) {
 
-        wp_enqueue_script('jquery.inputmask', get_theme_file_uri('/assets/js/jquery.inputmask.js'), array(), '');
-        wp_enqueue_script('datepicker.js', get_theme_file_uri('/assets/js/datepicker.min.js'), array(), '');
 
-    }
 
-    if (is_page_template('page-about.php')) {
-
-        wp_enqueue_script('query-object', get_theme_file_uri('/assets/js/jquery.query-object.js'), array(), '');
-
-    }
 
     if ($slick) {
+        wp_enqueue_script('jquery', get_theme_file_uri('/assets/js/jquery-3.2.1.min.js'), array(), '');
         wp_enqueue_script('slick.min', get_theme_file_uri('/assets/js/slick.min.js'), array(), '');
-        wp_enqueue_script('lightgallery.min', get_theme_file_uri('/assets/js/lightgallery.min.js'), array(), '');
-        wp_enqueue_script('lg-fullscreen.min', get_theme_file_uri('/assets/js/lg-fullscreen.min.js'), array(), '');
-        wp_enqueue_script('lg-thumbnail.min', get_theme_file_uri('/assets/js/lg-thumbnail.min.js'), array(), '');
     }
+    if (is_page_template('page-about.php')) {
+
+        wp_enqueue_script('slider', get_theme_file_uri('/assets/js/components/slider/slider.js'), array(), '', true);
+
+    }
+
+
+
 //    wp_enqueue_script('jquery.pagepiling.min', get_theme_file_uri('/assets/js/jquery.pagepiling.min.js'), array(), '1');
 //    wp_enqueue_script('default', get_theme_file_uri('/assets/js/default.js'), array(), '1.2');
 
@@ -124,37 +112,23 @@ function th_scripts()
 add_action('wp_enqueue_scripts', 'th_scripts');
 
 
-/*
-*  Rgister Post  Slider
-*/
 
-add_action('init', 'post_type_docs');
-
-function post_type_docs()
+/**
+ * AJAX
+ */
+function be_ajax_load_media()
 {
 
-    $labels = array(
-        'name' => 'Главный слайдер',
-        'singular_name' => 'Главный слайдер',
-        'all_items' => 'Главный слайдер',
-        'menu_name' => 'Главный слайдер' // ссылка в меню в админке
-    );
 
-    $args = array(
-        'labels' => $labels,
-        'public' => true,
-        'menu_position' => 5,
-        'has_archive' => true,
-        'query_var' => "sliders",
-        'supports' => array(
-            'title',
-            'editor',
-            'thumbnail'
-        )
-    );
-    register_post_type('sliders', $args);
+    echo 'awdawd';
+
+    wp_reset_postdata();
+    $data = ob_get_clean();
+    wp_send_json_success($data);
+    wp_die();
 }
-
+add_action('wp_ajax_be_ajax_load_media', 'be_ajax_load_media');
+add_action('wp_ajax_nopriv_be_ajax_load_media', 'be_ajax_load_media');
 
 /*
 *  Register Post Type  partners
@@ -185,7 +159,34 @@ function post_type_partners()
     register_post_type('partners', $args);
 }
 
+/*
+*  Register Post Type  About page Banner
+*/
 
+add_action('init', 'post_type_banner_about');
+
+function post_type_banner_about()
+{
+    $labels = array(
+        'name' => 'Баннер о компании',
+        'singular_name' => 'Баннер о компании',
+        'all_items' => 'Баннер о компании',
+        'menu_name' => 'Баннер о компании' // ссылка в меню в админке
+    );
+    $args = array(
+        'labels' => $labels,
+        'public' => true,
+        'menu_position' => 5,
+        'has_archive' => true,
+        'query_var' => "slider_about",
+        'supports' => array(
+            'title',
+            'editor',
+            'thumbnail'
+        )
+    );
+    register_post_type('slider_about', $args);
+}
 
 /*
 *  Register Post Type  partners
@@ -233,45 +234,33 @@ if (function_exists('acf_add_options_page')) {
 
 
 
-function post_pagination()
+
+function wpbeginner_numeric_posts_nav()
 {
-    global $wp_query;
-    $pager = 999999999; // need an unlikely integer
 
-    echo paginate_links(array(
-        'base' => str_replace($pager, '%#%', esc_url(get_pagenum_link($pager))),
-        'format' => '?paged=%#%',
-        'current' => max(1, get_query_var('paged')),
-        'total' => $wp_query->max_num_pages
-    ));
-}
-
-
-function wpbeginner_numeric_posts_nav() {
-
-    if( is_singular() )
+    if (is_singular())
         return;
 
     global $wp_query;
 
     /** Stop execution if there's only 1 page */
-    if( $wp_query->max_num_pages <= 1 )
+    if ($wp_query->max_num_pages <= 1)
         return;
 
-    $paged = get_query_var( 'paged' ) ? absint( get_query_var( 'paged' ) ) : 2;
-    $max   = intval( $wp_query->max_num_pages );
+    $paged = get_query_var('paged') ? absint(get_query_var('paged')) : 2;
+    $max = intval($wp_query->max_num_pages);
 
     /** Add current page to the array */
-    if ( $paged >= 1 )
+    if ($paged >= 1)
         $links[] = $paged;
 
     /** Add the pages around the current page to the array */
-    if ( $paged >= 3 ) {
+    if ($paged >= 3) {
         $links[] = $paged - 1;
         $links[] = $paged - 2;
     }
 
-    if ( ( $paged + 2 ) <= $max ) {
+    if (($paged + 2) <= $max) {
         $links[] = $paged + 2;
         $links[] = $paged + 1;
     }
@@ -279,29 +268,28 @@ function wpbeginner_numeric_posts_nav() {
     echo '<div class="pagination"><ul>' . "\n";
 
 
-
     /** Link to current page, plus 2 pages in either direction if necessary */
-    sort( $links );
-    foreach ( (array) $links as $link ) {
+    sort($links);
+    foreach ((array)$links as $link) {
         $class = $paged == $link ? ' class="active"' : '';
-        if($link != '1'){
-            printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $link ) ), $link );
+        if ($link != '1') {
+            printf('<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url(get_pagenum_link($link)), $link);
         }
 
     }
 
     /** Link to last page, plus ellipses if necessary */
-    if ( ! in_array( $max, $links ) ) {
-        if ( ! in_array( $max - 1, $links ) )
+    if (!in_array($max, $links)) {
+        if (!in_array($max - 1, $links))
             echo '<li>…</li>' . "\n";
 
         $class = $paged == $max ? ' class="active"' : '';
-        printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $max ) ), $max );
+        printf('<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url(get_pagenum_link($max)), $max);
     }
 
     /** Next Post Link */
-    if ( get_next_posts_link() )
-        printf( '<li class="link-next">%s</li>' . "\n", get_next_posts_link('<span> '.__("Далее", "light" ).'  </span>') );
+    if (get_next_posts_link())
+        printf('<li class="link-next">%s</li>' . "\n", get_next_posts_link('<span> ' . __("Далее", "light") . '  </span>'));
 
     echo '</ul></div>' . "\n";
 
@@ -357,19 +345,17 @@ function wpbeginner_numeric_posts_nav() {
 //
 
 
-
-
 /**
  * Replace symbols for phone
  * @param $phone
  * @return mixed
  */
-function pregPhone($phone){
+function pregPhone($phone)
+{
 
-    return  str_replace(['+','(', ')' , '-' , ' ' , '<span>', '</span>' ], "", $phone);
+    return str_replace(['+', '(', ')', '-', ' ', '<span>', '</span>'], "", $phone);
 
 }
-
 
 
 /*
@@ -423,23 +409,7 @@ function dimox_breadcrumbs()
         echo $wrap_before;
         if ($show_home_link) echo $home_link;
 
-        if (is_category()) {
-            $cat = get_category(get_query_var('cat'), false);
-            if ($cat->parent != 0) {
-                $cats = get_category_parents($cat->parent, TRUE, $sep);
-                $cats = preg_replace("#^(.+)$sep$#", "$1", $cats);
-                $cats = preg_replace('#<a([^>]+)>([^<]+)<\/a>#', $link_before . '<a$1' . $link_attr . '>' . $link_in_before . '$2' . $link_in_after . '</a>' . $link_after, $cats);
-                if ($show_home_link) echo $sep;
-                echo $cats;
-            }
-            if (get_query_var('paged')) {
-                $cat = $cat->cat_ID;
-                echo $sep . sprintf($link, get_category_link($cat), get_cat_name($cat)) . $sep . $before . sprintf($text['page'], get_query_var('paged')) . $after;
-            } else {
-                if ($show_current) echo $sep . $before . sprintf($text['category'], single_cat_title('', false)) . $after;
-            }
-
-        } elseif (is_search()) {
+        if (is_search()) {
             if (have_posts()) {
                 if ($show_home_link && $show_current) echo $sep;
                 if ($show_current) echo $before . sprintf($text['search'], get_search_query()) . $after;
@@ -475,7 +445,9 @@ function dimox_breadcrumbs()
                 $cat = $cat[0];
                 $cats = get_category_parents($cat, TRUE, $sep);
                 if (!$show_current || get_query_var('cpage')) $cats = preg_replace("#^(.+)$sep$#", "$1", $cats);
-                $cats = preg_replace('#<a([^>]+)>([^<]+)<\/a>#', $link_before . '<a$1' . $link_attr . '>' . $link_in_before . '$2' . $link_in_after . '</a>' . $link_after, $cats);
+                $cats = preg_replace('#<a([^>]+)>([^<]+)<\/a>#', $link_before . '<a href="/news"  ' . $link_attr . '>Новости</a>' . $link_after, $cats);
+
+
                 echo $cats;
                 if (get_query_var('cpage')) {
                     echo $sep . sprintf($link, get_permalink(), get_the_title()) . $sep . $before . sprintf($text['cpage'], get_query_var('cpage')) . $after;
@@ -560,4 +532,44 @@ function dimox_breadcrumbs()
         echo $wrap_after;
 
     }
+}
+
+/**
+ * Build menu
+ * @param array $elements
+ * @param int $parentId
+ * @return array
+ */
+function buildTreeMenu( $elements, $parentId = 0) {
+    $branch = array();
+
+    foreach ($elements as $element) {
+        if ($element->menu_item_parent == $parentId) {
+
+            $children = buildTreeMenu($elements, $element->ID);
+
+            if ($children) {
+
+
+                array_push($branch, [
+                    'title'    =>  $element->post_title,
+                    'url'      =>  $element->url,
+                    'child'    =>  $children
+
+
+                ]);
+            }else{
+                array_push($branch, [
+                    'title' =>  $element->post_title,
+                    'url'   =>  $element->url
+
+                ]);
+
+            }
+
+
+        }
+    }
+
+    return $branch;
 }

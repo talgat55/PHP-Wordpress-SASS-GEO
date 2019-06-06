@@ -1,108 +1,171 @@
 <?php
 /*
- * Template Name: Страница о ресторане
+ * Template Name: О компании
  */
 
 get_header(); ?>
 
     <div id="primary" class="content-area  ">
-        <div class="row relative">
-            <div class="image-block-bg">
-                <div class="col-sm-7 col-xs-12">
-
-                </div>
-                <?php
-                $banner_about   = get_field('banner_image_about', 'option');
-                $banner_booking = get_field('banner_image_booking', 'option');
-                $img_about      = get_field('description_img_about', get_the_ID());
-                $image_chief    = get_field('cook_image_about', get_the_ID());
-                $url = isset($_REQUEST['type']) ? $_REQUEST['type'] : '';
-
-                if($url == 'chief'){
-                    $tab['1'] = 'active';
-                    $tab['0'] = '';
-                    $img_redy = $image_chief;
-                }else{
-                    $tab['0'] = 'active';
-                    $tab['1'] = '';
-                    $img_redy = $img_about;
-                }
+        <div class="container-custom ">
+            <div class="row  padding-bottom-80">
+                <div class="col-sm-12 col-xs-12">
+                    <?php dimox_breadcrumbs(); ?>
+                    <h1 class="title  black"><?php the_title(); ?></h1>
 
 
-                $redy_url = $img_redy ? $img_redy : $banner_booking;
-                ?>
-                <div class="col-sm-5 col-xs-12  hidden-xs  booking-img " style="background: url(<?=$redy_url; ?>);">
+                    <div class="first-block">
+                        <div class="row  ">
+                            <div class="content col-sm-8 col-xs-12">
+                                Рекламный макет, пренебрегая деталями, недостаточно притягивает обществвенный сегмент
+                                рынка. <span>Более того</span>, восприятие марки достижимо в разумные сроки. Организация
+                                практического взаимодействия определяет медиаплан.<br>
+                                <span>Представляется логичным,</span> что баинг и селлинг порождает экспериментальный
+                                пресс-клиппинг. Партисипативное планирование наиболее полно усиливает клиентский спрос.
+                                В соответствии с законом Ципфа, бизнес-модель охватывает рейтинг, учитывая современные
+                                тенденции.<br>
+                                Конкурент допускает комплексный охват аудитории, осознав маркетинг как часть
+                                производства. <span>Инструмент маркетинга</span> подсознательно охватывает
+                                экспериментальный анализ зарубежного опыта.
+
+                            </div>
+                            <div class="aside col-sm-4 col-xs-12">
+                                <h4 class="title">
+                                    Дата регистрации
+                                </h4>
+                                <p class="content">
+                                    28.08.2012
+                                </p>
+                                <h4 class="title">
+                                    Вид деятельности
+                                </h4>
+                                <p class="content">
+                                    управление собственным имуществом, сдача в аренду движимого и недвижимого имущества
+                                    структурам группы компании ГеоЛад
+                                </p>
 
 
-                </div>
-            </div>
-            <div class="cont-mains">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-7 col-xs-12">
-                            <div class="row">
-                                <h1 class="page-title">
-                                    <?php echo get_the_title(); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="second-block">
 
-                                </h1>
+                        <div id="list-slider">
 
-                                <div class="about-content">
-                                   <ul class="navigation-tabs">
+
+                            <ul class="list-slider-about">
+                                <?php
+                                $args = array(
+                                    'posts_per_page' => '-1',
+                                    'post_type' => 'slider_about',
+                                    'orderby' => 'date',
+                                    'order' => 'DESC',
+                                    'post_status' => 'publish'
+
+                                );
+
+                                $the_query = new WP_Query($args);
+
+                                if ($the_query->have_posts()) :
+                                    while ($the_query->have_posts()) :
+                                        $the_query->the_post();
+                                        $post_id = $the_query->post->ID;
+                                        ?>
                                         <li>
-                                           <a href="#"   data-url="about"   class="item-tab about <?=$tab['0']; ?>"> 
-                                               <?php  _e('О ресторане', 'light'); ?>
-                                           </a>
+                                            <img src="  <?= wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), "full")[0]; ?> "
+                                                 alt="Изображение">
                                         </li>
-                                        <li>
-                                           <a href="#"  data-url="chief" class="item-tab shef <?=$tab['1']; ?>">
-                                               <?php  _e('шеф повар', 'light'); ?>
-                                           </a>
-                                        </li>
+                                        <?php
+                                    endwhile;
+                                endif;
+                                wp_reset_query();
+
+                                ?>
+
+                            </ul>
+                            <ul class="nav-arrow">
+                                <li>
+                                    <a href="#" class="prev"><i class='fas fa-chevron-left' aria-hidden='true'></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="next"><i class='fas fa-chevron-right' aria-hidden='true'></i></a>
+                                </li>
+
+                            </ul>
+
+                        </div>
 
 
+                    </div>
+                    <div class="third-block">
+                        <h2 class="sub-title">
+                            Задачи компании
+                        </h2>
+                        <ul class="list-tasks">
+                            <li class="flex-container">
+                                <img src="<?php echo get_theme_file_uri('/assets/images/arrow-active.png') ?>"
+                                     alt="Иконка">
+                                <p>
+                                    Обеспечение контроля за использованием и сохранностью имущества
+                                </p>
+                            </li>
+                            <li class="flex-container">
+                                <img src="<?php echo get_theme_file_uri('/assets/images/arrow-active.png') ?>"
+                                     alt="Иконка">
+                                <p>
+                                    Эффективная реализация инвестиционных проектов, связанных с развитием группы
+                                    компании Геолад
+                                </p>
+                            </li>
+                            <li class="flex-container">
+                                <img src="<?php echo get_theme_file_uri('/assets/images/arrow-active.png') ?>"
+                                     alt="Иконка">
+                                <p>
+                                    Приобретение производственного оборудования и других категорий основных средств,
+                                    отличающихся новыми характеристиками, более высокой производительностью, низким
+                                    энергопотреблением, экономией ресурсов.
 
-                                   </ul>
-                                    <div class="content-tabs">
-                                        <ul class="list">
-                                            <?php
-                                            while (have_posts()) : the_post();
-                                            $field_about    = get_field('description_text_about', get_the_ID());
-                                            $field_chief    = get_field('cook_text_about', get_the_ID());
+                                </p>
+                            </li>
 
 
-                                            ?>
-                                            <li class="about <?=$tab['0']; ?>"   data-url="<?=$img_about; ?>">
-                                                <div class="mobile-block-img" style="display: none;">
+                        </ul>
 
-                                                    <img src="<?=$img_about; ?>"  alt="Изображение" />
-                                                </div>
-                                                    <?= $field_about; ?>
-                                            </li>
-                                            <li class="chief <?=$tab['1']; ?>"  data-url="<?=$image_chief; ?>">
-                                                <div class="mobile-block-img" style="display: none;">
-                                                    <img src="<?=$image_chief; ?>"  alt="Изображение" />
-                                                </div>
-                                                    <?= $field_chief; ?>
-                                            </li>
+                        <h2 class="sub-title">
+                            Технопарк
+                        </h2>
+                        <div class="row  ">
+                            <div class="content col-sm-8 col-xs-12">
+                                Транспортный цех АО «СНПХ» является стабильно развивающимся <span>структурным блоком,</span> основной
+                                деятельностью которого является оказание широкого спектра транспортных услуг. В <span>его
+                                    составе имеется</span> многофункциональная и мобильная техника отечественного и импортного
+                                производства, предназначенная для выполнения всего комплекса технических,
+                                технологических, транспортных операций на объектах нефтедобычи. Основная задача
+                                обеспечение транспортом всех направлений деятельности компании, начиная от капитального
+                                и текущего ремонта скважин, зарезки боковых стволов, мобильного бурения, заканчивая
+                                кустовым бурением с эшелонной <span>буровой установки.</span><br>
+                                Обладая широким диапазоном транспортных средств и квалифицированным персоналом,
+                                транспортный цех имеет возможность решать вопросы, как в области перевозки пассажиров,
+                                так и в области перевозки грузов, в том числе, негабаритных, <span>тяжеловесных и опасных,</span> а
+                                также полное транспортное обслуживание бригад на всех стадиях производства.<br>
+                                Для обеспечения бесперебойной работы компания регулярно обновляет и расширяет подвижной
+                                парк <span>высокотехнологичной техники,</span> отвечающей современным стандартам безопасности и
+                                экологии. Транспортный цех насчитывает более 3 тысяч единиц, включающий в себя <span>беговую
+                                    технику,</span> спецтехнику, подъемные агрегаты и прочие транспортные средства. Парк техники
+                                постоянно обновляется. Cрок службы у большинства транспортных средств – менее 3-х лет.
+                            </div>
+                            <div class="aside col-sm-4 col-xs-12">
+                                <img class="img-aside" src="<?php echo get_theme_file_uri('/assets/images/about1.jpg') ?>"
+                                     alt="Изображение">
+                                <img class="img-aside"  src="<?php echo get_theme_file_uri('/assets/images/about2.jpg') ?>"
+                                     alt="Изображение">
 
-
-
-                                            <?php   endwhile;  ?>
-                                        </ul>
-
-                                    </div>
-
-                                </div>
                             </div>
                         </div>
 
                     </div>
+
                 </div>
             </div>
-
         </div>
     </div>
-
-
-
 <?php get_footer();

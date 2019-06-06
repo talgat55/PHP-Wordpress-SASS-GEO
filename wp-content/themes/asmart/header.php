@@ -106,3 +106,48 @@
         </div>
 
         <div id="content" class="site-content">
+<!--            <ul id="menu">-->
+<?php
+//$items = wp_get_nav_menu_items( 'Menu 1' );
+//$tree = buildTreeMenu($items);
+//
+//
+//
+////var_dump($tree->children);
+//        foreach ($tree as $item){
+//
+//            ?>
+<!---->
+<!--            <menu-item theme="main"  href="--><?//=$item['url']; ?><!--" class="item">-->
+<!---->
+<!--                --><?php
+//                if($item['child']){?>
+<!--                <span slot="title"   >--><?//= $item['title']; ?><!--</span>-->
+<!---->
+<!---->
+<!--                --><?php
+//
+//                    echo "<ul>";
+//                            foreach ($item['child'] as $item_child){  ?>
+<!---->
+<!--                                <li class="item">-->
+<!--                                    <a class="" href="--><?//= $item_child['url']; ?><!--" >--><?//= $item_child['title']; ?><!--</a>-->
+<!--                                </li>-->
+<!---->
+<!--                            --><?php
+//                            }
+//                    echo "</ul>";
+//
+//                }else{ ?>
+<!--                    <span slot="icon"></span>-->
+<!--                    <span slot="title" >--><?//= $item['title']; ?><!--</span>-->
+<!---->
+<!--                --><?php //} ?>
+<!---->
+<!--            </menu-item>-->
+<!--        --><?php
+//        }
+//
+//?>
+<!--            </ul>-->
+
