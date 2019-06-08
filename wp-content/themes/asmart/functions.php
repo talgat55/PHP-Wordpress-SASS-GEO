@@ -479,7 +479,17 @@ function dimox_breadcrumbs()
             if ($show_current) echo $sep . $before . get_the_title() . $after;
 
         } elseif (is_page() && !$parent_id) {
-            if ($show_current) echo $sep . $before . get_the_title() . $after;
+            $pageDirectChild = get_page_template_slug();
+            if($pageDirectChild == 'page-direction-child.php' ){
+                if ($show_current) echo $sep . $link_before .'<a href="/directions">Направления</a>' .  $link_after .$sep.  $before . get_the_title() . $after;
+            }else{
+                if ($show_current) echo $sep . $before . get_the_title() . $after;
+            }
+
+
+
+
+
 
         } elseif (is_page() && $parent_id) {
             if ($show_home_link) echo $sep;

@@ -29,61 +29,6 @@
       margin-top: 37px
       margin-bottom: 120px
 
-    .kinds-block
-      width: 100%
-      background-color: #fff
-      border: 1px solid #ECECEC
-      box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.05)
-      position: absolute
-      bottom: -85px
-      .item
-        padding-left: 0
-        padding-right: 0
-        border-right: 1px solid #ECECEC
-        &:last-child
-          border-right: none
-          padding-right: 15px
-        &:first-child
-          padding-left: 15px
-        .item-walp
-          padding: 20px 15px
-          display: inline-block
-          transition: all .3s
-          height: 145px
-          position: relative
-          width: 100%
-          .title
-            color: #313131
-            font-family: $font_bold
-            font-size: 14px
-            margin-top: 0
-            margin-bottom: 10px
-            transition: all .3s
-          .content
-            font-size: 10px
-            color: rgba(49, 49, 49, 0.6)
-            font-family: $font_regular
-          .arrow
-            position: absolute
-            bottom: 15px
-            right: 16px
-            .hover
-              display: none
-
-
-
-
-        .item-walp:hover
-          text-decoration: none
-          box-shadow: -30px 0px 50px rgba(0, 0, 0, 0.05)
-          .title
-            color: $main_color
-          .arrow
-            .hover
-              display: block
-            .main
-              display: none
-
 
 
 //
@@ -463,3 +408,101 @@
 
     .img-aside
       margin-bottom: 20px
+
+
+
+
+
+//
+// Page Direction
+//
+.page-template-page-direction-php
+  .content
+    margin-bottom: 20px
+
+  .list-directions
+    .item
+      position: relative
+      text-decoration: none
+      color: #fff
+      display: block
+      img
+        width: 100%
+
+      .overlay
+        position: absolute
+        z-index: 2
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+        transition: all .3s
+        background: rgba(0,0,0,.6)
+      .title
+        margin: 0
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        padding: 25px 30px
+        z-index: 3
+        color: #fff
+        font-size: 24px
+        font-family: $font_bold
+        &.two
+          font-size: 18px
+      &:hover
+        .overlay
+          background: rgba(68,152,229,.5)
+    .item-col:last-child,
+    .item-col:first-child
+      padding-bottom: 5px
+    .item-col:first-child
+      padding-right: 2.5px
+    .item-col:last-child
+      padding-left: 2.5px
+    .item-col-2:first-child
+      padding-right: 2.5px
+
+    .item-col-2:nth-of-type(3n+2)
+      padding: 0 2.5px
+
+    .item-col-2:nth-of-type(3n+3)
+      padding-left: 2.5px
+
+    .item-col-2
+      img
+        height: 195px
+
+
+//
+// Page structure
+//
+.page-template-page-structure-php
+  .kinds-block
+    margin-top: 30px
+    width: 100%
+    background-color: #fff
+    border: none
+    box-shadow: none
+    position: relative
+    bottom: 0
+    .item
+      border: none
+
+      .item-walp
+        border: 1px solid #ECECEC
+        width: 239px
+        margin: 0 auto
+        display: block
+      .arrow
+        bottom: 0!important
+
+  .arrow
+    img
+      margin: 13px auto
+      display: block
+
+
+
+
