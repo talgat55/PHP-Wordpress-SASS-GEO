@@ -11,41 +11,38 @@ get_header(); ?>
                     <?php dimox_breadcrumbs(); ?>
                     <h1 class="title  black"><?php the_title(); ?></h1>
                     <div id="news-list">
-                    <ul >
-                        <?php
-                        $args = array(
-                            'posts_per_page' => '2',
-                            'post_type' => 'post',
-                            'orderby' => 'date',
-                            'order' => 'DESC',
-                            'post_status' => 'publish'
+                    <ul class="list-news">
 
-                        );
 
-                        $the_query = new WP_Query($args);
+                        <li class="item flex-container-top"  v-for='post in posts'>
+                            <div class="img-block">
+                                <a :href="post.link">
+                                    <img  :src="post.image"  alt="Изображение"/>
+                                </a>
+                            </div>
+                            <div class="text">
+                                <h3 class="title" >
+                                    <a :href="post.link">
+                                    {{ post.title }}
+                                    </a>
+                                </h3>
+                                <div class="date" v-cloak>
+                                    {{ post.date }}
+                                </div>
+                                <div class="excerpt" v-cloak>
+                                    {{ post.excerpt }}
+                                </div>
+                                <a :href="post.link" class="link-more">
+                                    Читать полностью
+                                </a>
+                            </div>
 
-                        if ($the_query->have_posts()) :
-                            while ($the_query->have_posts()) :
-                                $the_query->the_post();
-                                $post_id = $the_query->post->ID;
-
-                                get_template_part('inc/item');
-
-                            endwhile;
-                        endif;
-                        wp_reset_query();
-
-                        ?>
-
+                        </li>
                     </ul>
-                    <a v-bind:class="[isFinished ? 'finish' : 'load-more']" @click='getPosts()' v-cloak>{{ buttonText }}</a>
+                    <a  class="news-link" v-bind:class="[isFinished ? 'finish' : 'load-more']" @click='getPosts()' v-cloak>{{ buttonText }}</a>
 
                     </div>
-                    <div>
-                        <a class="load-more"  href="#" >
-                            Показать ещё
-                        </a>
-                    </div>
+
                 </div>
             </div>
         </div>

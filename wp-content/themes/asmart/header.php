@@ -118,11 +118,11 @@
 //
 //            ?>
 <!---->
-<!--            <menu-item theme="main"  href="--><?//=$item['url']; ?><!--" class="item">-->
+<!--            <menu-item theme="main" class="item">-->
 <!---->
 <!--                --><?php
 //                if($item['child']){?>
-<!--                <span slot="title"   >--><?//= $item['title']; ?><!--</span>-->
+<!--                <span slot="title"   href="--><?//=$item['url']; ?><!--"  >--><?//= $item['title']; ?><!--</span>-->
 <!---->
 <!---->
 <!--                --><?php

@@ -1,6 +1,5 @@
 <?php
 
-
 /*
 * Register nav menu
 */
@@ -113,22 +112,6 @@ add_action('wp_enqueue_scripts', 'th_scripts');
 
 
 
-/**
- * AJAX
- */
-function be_ajax_load_media()
-{
-
-
-    echo 'awdawd';
-
-    wp_reset_postdata();
-    $data = ob_get_clean();
-    wp_send_json_success($data);
-    wp_die();
-}
-add_action('wp_ajax_be_ajax_load_media', 'be_ajax_load_media');
-add_action('wp_ajax_nopriv_be_ajax_load_media', 'be_ajax_load_media');
 
 /*
 *  Register Post Type  partners

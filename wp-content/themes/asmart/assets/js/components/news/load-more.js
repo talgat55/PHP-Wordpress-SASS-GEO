@@ -2,33 +2,32 @@ var app = new Vue({
     el: '#news-list',
     data: {
         isFinished: false,
-        row: 0, // Record selction position
-        rowperpage: 3, // Number of records fetch at a time
+        row: 1, // Record selction position
         buttonText: 'Показать еще',
         posts: ''
     },
     methods: {
         getPosts: function(){
 
-            axios.post( myajax.url , {
-                action: 'be_ajax_load_media',
-                page: 2
+            axios.get( '/wp-content/themes/asmart/ajax.php' , {
+                params: {
+                    page:  this.row
+                }
             })
                 .then(function (response) {
 
                     if(response.data !='' ){
 
-                        // Update rowperpage
-                        app.row+=app.rowperpage;
+                        app.row++;
 
                         var len = app.posts.length;
                         if(len > 0){
-                            app.buttonText = "Loading ...";
+                            app.buttonText = "Загрузка ...";
                             setTimeout(function() {
-                                app.buttonText = "Load More";
-
-                                app.posts.push(response.data);
-                                console.log(response.data);
+                                app.buttonText = "Показать еще";
+                                for (let i = 0; i < response.data.length; i++){
+                                    app.posts.push(response.data[i]);
+                                }
 
                             },500);
                         }else{
@@ -36,7 +35,7 @@ var app = new Vue({
                         }
 
                     }else{
-                        app.buttonText = "No more records avaiable.";
+                        app.buttonText = "Записей больше нет.";
                         app.isFinished = true;
                     }
                 });

@@ -373,6 +373,8 @@ body:not(.home) #top-bar {
   #top-bar .link-call {
     margin: 0 0 0 auto;
     display: table; }
+  #top-bar #menu a {
+    color: #000; }
 
 .home #top-bar {
   position: absolute;
@@ -623,6 +625,23 @@ body:not(.home) #top-bar {
       #news-list ul .item .text .link-more:hover {
         background-color: #333;
         text-decoration: none; }
+
+.page-template-page-news-php .news-link {
+  margin: 60px auto 0 auto;
+  display: table;
+  color: #4498E5 !important;
+  font-family: "Gotham Pro Medium";
+  border: 1px solid #4498E5;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  padding: 16px 65px;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  cursor: pointer; }
+  .page-template-page-news-php .news-link:hover {
+    background-color: #4498E5;
+    color: #fff !important; }
 
 .single-post .img {
   position: relative;
