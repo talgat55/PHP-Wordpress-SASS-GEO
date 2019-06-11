@@ -53,8 +53,35 @@
             <a href="<?= home_url(); ?>" class="logo">
                 <img src="<?php echo get_theme_file_uri('/assets/images/logo.png') ?>" alt="логотип">
             </a>
-            <?php wp_nav_menu('menu_id=menu-main&container=nav&menu_class=top-main-container clearfix&theme_location=top_menu'); ?>
+<!--            --><?php //wp_nav_menu('menu_id=menu-main&container=nav&menu_class=top-main-container clearfix&theme_location=top_menu'); ?>
+            <div id="menu">
+                <nav class="main-navigation">
+                    <ul id="menu-main" class="nav-bar menu">
+                        <li   v-for="(item, index) in info" :key="index" class=" " >
+                            <a  v-if="item.child_items" v-bind:class="{ active: isActive }" v-on:click="isActive = !isActive">
+                                {{ item.post_title }}
+                            </a>
+                            <a  v-else  :href="item.url" >
+                                {{ item.post_title }}
+                            </a>
+                            <i class="fa  fa-angle-down title-icon"   v-if="item.child_items" ></i>
 
+                            <transition name="fade">
+                                <div v-if="isActive">
+                                    <ul  v-if="item.child_items" class="child-nav-bar">
+                                        <li   v-for="(item_child, index) in item.child_items" :key="index" >
+                                            <a :href="item_child.url" >
+                                                {{ item_child.post_title }}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </transition>
+
+                        </li>
+                    </ul>
+                </nav>
+            </div>
             <a href="#" class="link-presentation">
                 Презентация о компании
             </a>
@@ -106,48 +133,4 @@
         </div>
 
         <div id="content" class="site-content">
-<!--            <ul id="menu">-->
-<?php
-//$items = wp_get_nav_menu_items( 'Menu 1' );
-//$tree = buildTreeMenu($items);
-//
-//
-//
-////var_dump($tree->children);
-//        foreach ($tree as $item){
-//
-//            ?>
-<!---->
-<!--            <menu-item theme="main" class="item">-->
-<!---->
-<!--                --><?php
-//                if($item['child']){?>
-<!--                <span slot="title"   href="--><?//=$item['url']; ?><!--"  >--><?//= $item['title']; ?><!--</span>-->
-<!---->
-<!---->
-<!--                --><?php
-//
-//                    echo "<ul>";
-//                            foreach ($item['child'] as $item_child){  ?>
-<!---->
-<!--                                <li class="item">-->
-<!--                                    <a class="" href="--><?//= $item_child['url']; ?><!--" >--><?//= $item_child['title']; ?><!--</a>-->
-<!--                                </li>-->
-<!---->
-<!--                            --><?php
-//                            }
-//                    echo "</ul>";
-//
-//                }else{ ?>
-<!--                    <span slot="icon"></span>-->
-<!--                    <span slot="title" >--><?//= $item['title']; ?><!--</span>-->
-<!---->
-<!--                --><?php //} ?>
-<!---->
-<!--            </menu-item>-->
-<!--        --><?php
-//        }
-//
-//?>
-<!--            </ul>-->
 

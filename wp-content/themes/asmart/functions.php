@@ -62,15 +62,15 @@ function th_scripts()
     wp_enqueue_style('main-style', get_theme_file_uri('/assets/css/style.css'), array(), '1');
 
 
-    // wp_enqueue_script('vue-dev', get_theme_file_uri('/assets/js/vue_dev.js'), array(), '');
-    wp_enqueue_script('vue-prod', get_theme_file_uri('/assets/js/vue_prod.js'), array(), '');
+     wp_enqueue_script('vue-dev', get_theme_file_uri('/assets/js/vue_dev.js'), array(), '');
+//    wp_enqueue_script('vue-prod', get_theme_file_uri('/assets/js/vue_prod.js'), array(), '');
     if (is_page_template('page-vacancies.php')) {
 
         wp_enqueue_script('accordion-vue', get_theme_file_uri('/assets/js/components/accordion/accordion.js'), array(), '', true);
 
     }
 
-    if (is_page_template('page-news.php')) {
+    if (is_page_template('page-news.php') || is_home()) {
         wp_enqueue_script('axios', get_theme_file_uri('/assets/js/axios.min.js'), array(), '', true);
         wp_enqueue_script('accordion-vue', get_theme_file_uri('/assets/js/components/news/load-more.js'), array(), '', true);
 

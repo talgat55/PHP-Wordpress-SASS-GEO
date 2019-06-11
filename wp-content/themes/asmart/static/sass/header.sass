@@ -24,6 +24,7 @@ header
       padding: 25px
       li
         list-style: none
+        position: relative
         a
           color: #000
           text-decoration: none
@@ -32,10 +33,19 @@ header
           padding: 10px 0
           display: inline-block
           transition: all .3s
+          cursor: pointer
           &:hover
             color: $main_color
             text-decoration: none
+        i
+          position: absolute
+          right: 0
+          top: 14px
+          font-size: 17px
 
+      > li
+        display: block
+        width: 100%
 
   .link-presentation
     display: block

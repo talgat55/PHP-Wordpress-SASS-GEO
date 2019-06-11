@@ -267,6 +267,14 @@ a.link-alt {
       .home .kinds-block .item .item-walp:hover .arrow .main {
         display: none; }
 
+.fade-enter-active, .fade-leave-active {
+  -webkit-transition: opacity .3s;
+  -o-transition: opacity .3s;
+  transition: opacity .3s; }
+
+.fade-enter, .fade-leave-to {
+  opacity: 0; }
+
 header {
   width: 340px;
   position: fixed;
@@ -289,7 +297,8 @@ header {
       margin: 0;
       padding: 25px; }
       header nav #menu-main li {
-        list-style: none; }
+        list-style: none;
+        position: relative; }
         header nav #menu-main li a {
           color: #000;
           text-decoration: none;
@@ -299,10 +308,19 @@ header {
           display: inline-block;
           -webkit-transition: all .3s;
           -o-transition: all .3s;
-          transition: all .3s; }
+          transition: all .3s;
+          cursor: pointer; }
           header nav #menu-main li a:hover {
             color: #4498E5;
             text-decoration: none; }
+        header nav #menu-main li i {
+          position: absolute;
+          right: 0;
+          top: 14px;
+          font-size: 17px; }
+      header nav #menu-main > li {
+        display: block;
+        width: 100%; }
   header .link-presentation {
     display: block;
     font-family: "Gotham Pro Medium";
