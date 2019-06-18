@@ -74,39 +74,39 @@
 //
 // Partners block
 //
-.home
-  .partners-block
-    background: url(../images/partners-bg.jpg)
-    background-repeat: no-repeat!important
-    background-size: cover!important
-    padding: 0 0 50px 0
-    .bar
-      width: 100%
-      position: absolute
-      top: 50px
+.page-template-page-partners,
+.home  .partners-block
+  background: url(../images/partners-bg.jpg)
+  background-repeat: no-repeat!important
+  background-size: cover!important
+  padding: 0 0 50px 0
+  .bar
+    width: 100%
+    position: absolute
+    top: 50px
 
-    .pathers-list
-      margin: 0
-      width: 100%
-      padding: 0
-      li
-        padding: 170px 0 0 0
-        list-style: none
-        a
-          display: table-cell
-          padding: 0 25px
-          height: 96px
-          vertical-align: middle
-        &:hover
-          background: url("../images/hover-partners.png")
-          background-repeat: no-repeat!important
+  .pathers-list
+    margin: 0
+    width: 100%
+    padding: 0
+    li
+      padding: 170px 0 0 0
+      list-style: none
+      a
+        display: table-cell
+        padding: 0 25px
+        height: 96px
+        vertical-align: middle
+      &:hover
+        background: url("../images/hover-partners.png")
+        background-repeat: no-repeat!important
 
-    .sub-title
-      margin-bottom: 0
+  .sub-title
+    margin-bottom: 0
 
-    a.link-alt
-      padding-left: 70px
-      padding-right: 70px
+  a.link-alt
+    padding-left: 70px
+    padding-right: 70px
 
 //
 // Third block
@@ -176,10 +176,12 @@
     .content
       transition: 150ms ease-out
       overflow: hidden
-      padding: 35px
+
       background: #fff
       font-size: 18px
       font-family: $font_regular
+      .content-inner
+        padding: 35px
       h4
         margin: 0
         display: inline-block
@@ -517,5 +519,25 @@
       display: block
 
 
+//
+//  Partners page
+//
+.page-template-page-partners
+  .site-header
+    background-color: #fff
+  #primary
+    background: url(../images/partners-bg.jpg)
+    background-size: cover!important
+    margin-bottom: 0
+    padding-bottom: 80px
 
+    .breadcrumbs
+      span,
+      a
+        color: #fff
 
+    .title
+      margin-top: 30px
+
+    .pathers-list li
+      padding: 0

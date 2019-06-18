@@ -21,7 +21,7 @@ get_header(); ?>
                     <div class="list-directions">
                         <div class="row">
                             <div class="item-col col-sm-6 col-xs-12">
-                                <a href="#" class="item">
+                                <a href="<?=arrayLinks('burenie-skvazhin'); ?>" class="item">
                                     <img src="<?php echo get_theme_file_uri('/assets/images/d1.jpg') ?>"
                                          alt="Изображеине направления">
                                     <div class="overlay"></div>
@@ -31,7 +31,7 @@ get_header(); ?>
                                 </a>
                             </div>
                             <div class="item-col  col-sm-6 col-xs-12">
-                                <a href="#" class="item">
+                                <a href="<?=arrayLinks('osvoenie-skvazhin'); ?>" class="item">
                                     <img src="<?php echo get_theme_file_uri('/assets/images/d2.jpg') ?>"
                                          alt="Изображеине направления">
                                     <div class="overlay"></div>
@@ -43,7 +43,7 @@ get_header(); ?>
                         </div>
                         <div class="row">
                             <div class="item-col-2 col-sm-4 col-xs-12">
-                                <a href="#" class="item">
+                                <a href="<?=arrayLinks('geofizicheskie-i-geologo-tehnologicheskie-isledovaniya-skvazhin'); ?>" class="item">
                                     <img src="<?php echo get_theme_file_uri('/assets/images/d3.jpg') ?>"
                                          alt="Изображеине направления">
                                     <div class="overlay"></div>
@@ -53,7 +53,7 @@ get_header(); ?>
                                 </a>
                             </div>
                             <div class="item-col-2  col-sm-4 col-xs-12">
-                                <a href="#" class="item">
+                                <a href="<?=arrayLinks('tekushhij-i-kapitalnyj-remont-skvazhin'); ?>" class="item">
                                     <img src="<?php echo get_theme_file_uri('/assets/images/d4.jpg') ?>"
                                          alt="Изображеине направления">
                                     <div class="overlay"></div>
@@ -63,7 +63,7 @@ get_header(); ?>
                                 </a>
                             </div>
                             <div class="item-col-2  col-sm-4 col-xs-12">
-                                <a href="#" class="item">
+                                <a href="<?=arrayLinks('rekonstrukcziya-skvazhin-metodom-zbs'); ?>" class="item">
                                     <img src="<?php echo get_theme_file_uri('/assets/images/d5.jpg') ?>"
                                          alt="Изображеине направления">
                                     <div class="overlay"></div>

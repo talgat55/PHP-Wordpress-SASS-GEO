@@ -53,35 +53,8 @@
             <a href="<?= home_url(); ?>" class="logo">
                 <img src="<?php echo get_theme_file_uri('/assets/images/logo.png') ?>" alt="логотип">
             </a>
-<!--            --><?php //wp_nav_menu('menu_id=menu-main&container=nav&menu_class=top-main-container clearfix&theme_location=top_menu'); ?>
-            <div id="menu">
-                <nav class="main-navigation">
-                    <ul id="menu-main" class="nav-bar menu">
-                        <li   v-for="(item, index) in info" :key="index" class=" " >
-                            <a  v-if="item.child_items" v-bind:class="{ active: isActive }" v-on:click="isActive = !isActive">
-                                {{ item.post_title }}
-                            </a>
-                            <a  v-else  :href="item.url" >
-                                {{ item.post_title }}
-                            </a>
-                            <i class="fa  fa-angle-down title-icon"   v-if="item.child_items" ></i>
+            <?php wp_nav_menu('menu_id=menu-main&container=nav&menu_class=top-main-container clearfix&theme_location=top_menu'); ?>
 
-                            <transition name="fade">
-                                <div v-if="isActive">
-                                    <ul  v-if="item.child_items" class="child-nav-bar">
-                                        <li   v-for="(item_child, index) in item.child_items" :key="index" >
-                                            <a :href="item_child.url" >
-                                                {{ item_child.post_title }}
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </transition>
-
-                        </li>
-                    </ul>
-                </nav>
-            </div>
             <a href="#" class="link-presentation">
                 Презентация о компании
             </a>

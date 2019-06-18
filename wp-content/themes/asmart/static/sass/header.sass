@@ -21,31 +21,53 @@ header
 
     #menu-main
       margin: 0
-      padding: 25px
+      padding: 25px 0
       li
         list-style: none
         position: relative
+        transition: all .3s
+        &.active
+          background-color: #fff
+          i
+            color: $main_color
+
         a
           color: #000
           text-decoration: none
           font-size: 16px
           font-family: $font_medium
-          padding: 10px 0
+          padding: 10px 25px
           display: inline-block
           transition: all .3s
           cursor: pointer
+
           &:hover
             color: $main_color
             text-decoration: none
         i
           position: absolute
-          right: 0
+          right: 25px
           top: 14px
           font-size: 17px
 
       > li
         display: block
         width: 100%
+    .child-nav-bar
+      padding: 0
+      li
+        a
+          font-family: $font_regular!important
+          text-decoration: underline!important
+
+    .sub-menu
+      display: none
+      padding: 0
+      a
+        font-family: $font_regular!important
+        text-decoration: underline!important
+
+
 
   .link-presentation
     display: block

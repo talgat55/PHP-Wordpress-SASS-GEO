@@ -61,18 +61,19 @@ function th_scripts()
 
     wp_enqueue_style('main-style', get_theme_file_uri('/assets/css/style.css'), array(), '1');
 
-
+     wp_enqueue_script('jquery', get_theme_file_uri('/assets/js/jquery-3.2.1.min.js'), array(), '');
      wp_enqueue_script('vue-dev', get_theme_file_uri('/assets/js/vue_dev.js'), array(), '');
 //    wp_enqueue_script('vue-prod', get_theme_file_uri('/assets/js/vue_prod.js'), array(), '');
+    wp_enqueue_script('axios', get_theme_file_uri('/assets/js/axios.min.js'), array(), '', true);
     if (is_page_template('page-vacancies.php')) {
 
         wp_enqueue_script('accordion-vue', get_theme_file_uri('/assets/js/components/accordion/accordion.js'), array(), '', true);
 
     }
 
-    if (is_page_template('page-news.php') || is_home()) {
-        wp_enqueue_script('axios', get_theme_file_uri('/assets/js/axios.min.js'), array(), '', true);
-        wp_enqueue_script('accordion-vue', get_theme_file_uri('/assets/js/components/news/load-more.js'), array(), '', true);
+    if (is_page_template('page-news.php')  ) {
+
+        wp_enqueue_script('news-vue', get_theme_file_uri('/assets/js/components/news/load-more.js'), array(), '', true);
 
 
     }
@@ -91,7 +92,7 @@ function th_scripts()
 
 
     if ($slick) {
-        wp_enqueue_script('jquery', get_theme_file_uri('/assets/js/jquery-3.2.1.min.js'), array(), '');
+
         wp_enqueue_script('slick.min', get_theme_file_uri('/assets/js/slick.min.js'), array(), '');
     }
     if (is_page_template('page-about.php')) {
@@ -464,7 +465,7 @@ function dimox_breadcrumbs()
         } elseif (is_page() && !$parent_id) {
             $pageDirectChild = get_page_template_slug();
             if($pageDirectChild == 'page-direction-child.php' ){
-                if ($show_current) echo $sep . $link_before .'<a href="/directions">Направления</a>' .  $link_after .$sep.  $before . get_the_title() . $after;
+                if ($show_current) echo $sep . $link_before .'<a href="/napravleniya-deyatelnosti/">Направления</a>' .  $link_after .$sep.  $before . get_the_title() . $after;
             }else{
                 if ($show_current) echo $sep . $before . get_the_title() . $after;
             }
@@ -565,4 +566,33 @@ function buildTreeMenu( $elements, $parentId = 0) {
     }
 
     return $branch;
+}
+
+/**
+ *   Return properly link to page
+ * @param $name
+ * @return string
+ */
+
+function arrayLinks($name){
+
+    if($name =='partners'){
+        $redyUrl = '/parntery/';
+    } else if($name =='about'){
+        $redyUrl = '/about/';
+    }else if($name =='burenie-skvazhin'){
+        $redyUrl = '/burenie-skvazhin/';
+    }else if($name =='osvoenie-skvazhin'){
+        $redyUrl = '/osvoenie-skvazhin/';
+    }else if($name =='geofizicheskie-i-geologo-tehnologicheskie-isledovaniya-skvazhin'){
+        $redyUrl = '/geofizicheskie-i-geologo-tehnologicheskie-isledovaniya-skvazhin/';
+    }else if($name =='tekushhij-i-kapitalnyj-remont-skvazhin'){
+        $redyUrl = '/tekushhij-i-kapitalnyj-remont-skvazhin/';
+    }else if($name =='rekonstrukcziya-skvazhin-metodom-zbs'){
+        $redyUrl = '/rekonstrukcziya-skvazhin-metodom-zbs/';
+    } else{
+        $redyUrl = '';
+    }
+
+    return $redyUrl;
 }

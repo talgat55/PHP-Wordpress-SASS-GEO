@@ -14,7 +14,7 @@ get_header(); ?>
                         Состоит из 4 предприятий и основана <span>в 1998 году в городе «Радужный»,</span><br>
                         общая численность персонала группы — <span>500+</span> человек.
                     </blockquote>
-                    <a href="#" class="link-alt">
+                    <a href="<?=arrayLinks('about'); ?>" class="link-alt">
                         Узнать подробнее
                     </a>
                     <div class="kinds-block">
@@ -129,7 +129,7 @@ get_header(); ?>
                     <h2 class="sub-title white-title">
                         Наши партнеры
                     </h2>
-                    <a href="#" class="link-alt">
+                    <a href="<?= arrayLinks('partners'); ?>" class="link-alt">
                         Весь список
                     </a>
 
@@ -155,12 +155,10 @@ get_header(); ?>
                             $link = get_field('link_partners', $post_id);
 
                             ?>
-                            <li class="item">
+                            <li class="item  ">
                                 <a href="<?= $link; ?>" target="_blank">
                                     <img src="<?= $img_url; ?>" alt="Логотип партнер"/>
                                 </a>
-
-
                             </li>
 
 

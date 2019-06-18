@@ -1,15 +1,24 @@
-new Vue({
-    el: '#menu',
-    data() {
-        return {
-            info: null,
-            isActive: false
-        };
-    },
-    created() {
-        axios
-            .get('/wp-json/menus/v1/menus/menu-1')
-            .then(response => (this.info = response.data.items ));
+// ---------------------------------------------------------
+// !!!!!!!!!!!!!!!!!document ready!!!!!!!!!!!!!!!!!!!!!!!!!!
+// ---------------------------------------------------------
 
-    }
+jQuery(document).ready(function () {
+    "use strict";
+    //
+    //  navigation dropdown
+    //
+    jQuery('#menu-main .menu-item-has-children > a').click(function(e) {
+        e.preventDefault();
+        var $this = jQuery(this);
+        $this.parent().toggleClass('active');
+
+        $this.next().stop().slideToggle();
+
+    }).next().stop().hide();
+
+    //
+    // Add arrow down for li have sub menu
+    //
+    jQuery('#menu-main .menu-item-has-children ').append('<i class="fa  fa-angle-down title-icon"></i>');
+// end redy function
 });
