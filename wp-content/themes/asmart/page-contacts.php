@@ -14,7 +14,7 @@ get_header(); ?>
 
                     <div class="row contact-block">
 
-                        <div class="item col-sm-4  col-xs-12  text-left">
+                        <div class="item col-md-4  col-xs-12  text-left">
 
                             <h3>
                                 Адрес:
@@ -29,7 +29,7 @@ get_header(); ?>
                             </ul>
                         </div>
 
-                        <div class="item col-sm-4  col-xs-12  text-left">
+                        <div class="item col-md-4  col-xs-12  text-left">
 
                             <h3>
                                 Время работы:
@@ -45,7 +45,7 @@ get_header(); ?>
                         </div>
 
 
-                        <div class="item col-sm-4  col-xs-12  text-left">
+                        <div class="item col-md-4  col-xs-12  text-left">
 
                             <h3>
                                 Телефон:

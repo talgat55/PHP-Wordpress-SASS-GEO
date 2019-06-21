@@ -7,6 +7,20 @@ $font_regular: 'Gotham Pro Regular'
 $main_color: #4498E5
 $gray_color: #333
 
+::-webkit-scrollbar
+  width: 10px
+
+/* Track */
+::-webkit-scrollbar-track
+  background: #f8f8f8
+
+/* Handle */
+::-webkit-scrollbar-thumb
+  background: $main_color
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover
+  background: #333
 @font-face
   font-family: 'Gotham Pro Bold'
   src: url('GothaProBol.woff') format('woff'),
@@ -322,7 +336,7 @@ a.link-alt
 
 @media (max-width: 1368px)
   .container-custom
-    width: 865px
+    width: 830px
 
   #top-bar
     .phone-block,
@@ -344,4 +358,166 @@ a.link-alt
           max-width: 126px
 
 
+@media (max-width: 1200px)
+  header
+    z-index: 99
+    background-color: #fff
+    &.is-active
+      left: 0!important
+    .logo
+      width: 100%
+      text-align: center
+      padding: 57px 30px 40px
+      img
+        width: 165px
 
+
+  #mobile-toggle
+    display: block
+
+  .container-custom
+    width: 90%
+
+  .site-content-contain
+    width: 100%
+    margin-left: 0
+
+  header
+    left: -340px
+
+  #top-bar
+    .first-column
+      padding-left: 60px
+
+
+
+@media (max-width: 992px)
+  .page-template-page-about .third-block .img-aside
+    width: 100%
+
+  .pathers-list.flex-space-beetwen
+    display: block
+
+    li
+      width: calc(24.5%)
+      display: inline-block
+
+
+  .page-template-page-partners ,
+  .home
+    .partners-block
+      .bar
+        position: initial
+        top: 0
+        padding-top: 40px
+
+      li
+        padding-top: 25px!important
+    .first-block
+      margin-bottom: 0!important
+      a.link-alt
+        margin-bottom: 40px
+
+  .kinds-block
+    position: initial!important
+    bottom: 0!important
+    .item
+      border: 0!important
+
+  #top-bar
+    .email-block
+      margin-left: 0
+      width: 100%
+
+
+  .site-footer
+    .second-row
+      .copyright
+        text-align: center
+
+      .bootom-copyright
+        margin: 9px auto
+        display: table
+
+@media (max-width: 768px)
+  .page-template-page-direction-php
+    .list-directions
+      .item-col
+        &:first-child
+          padding-right: 15px
+        &:last-child
+          padding-left: 15px
+      .item-col-2:nth-of-type(3n+3),
+      .item-col-2:nth-of-type(3n+2),
+      .item-col-2:first-child
+        padding-right: 15px
+        padding-left: 15px
+        padding-bottom: 15px
+
+
+
+  #top-bar
+    .phone-block,
+    .email-block
+      .content a
+        line-height: 30px
+
+  .home
+    .kinds-block
+      .item
+        padding: 10px!important
+  footer
+    .menu-menu-2-container
+      margin-bottom: 30px
+
+  .page-template-page-contacts
+    .contact-block
+      .item
+        margin-bottom: 30px
+
+    .padding-bottom-80
+      padding-bottom: 20px
+
+@media (max-width: 600px)
+  #top-bar
+    .first-column
+      padding: 0!important
+      .phone-block,
+      .email-block
+        display: table
+        margin: 0 auto 10px auto!important
+        width: auto!important
+    .link-call
+      margin: 0 auto
+
+  .partners-block
+    .bar.flex-space-beetwen
+      display: block!important
+      .sub-title.white-title
+        text-align: center
+        margin-bottom: 20px
+
+    .pathers-list
+      &.flex-space-beetwen
+        li
+          width: 100%
+          a
+            display: block!important
+            margin: 0 auto
+            text-align: center
+
+
+  .home
+    .third-block:before
+      display: none!important
+    .first-block
+      .title
+        margin-top: 200px
+
+    .partners-block
+      a.link-alt
+        margin: 0 auto
+        display: table
+  #primary:before,
+  .map-block .content-block
+    display: none!important

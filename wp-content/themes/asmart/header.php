@@ -14,7 +14,8 @@
     <meta name="yandex-verification" content="b19eaf226c9b90c0"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <link rel="profile" href="http://gmpg.org/xfn/11">
-<!--    <link rel="shortcut icon" href="--><?php //echo get_theme_file_uri('favicon.png?v=1.1') ?><!--" type="image/x-icon"/>-->
+    <!--    <link rel="shortcut icon" href="-->
+    <?php //echo get_theme_file_uri('favicon.png?v=1.1') ?><!--" type="image/x-icon"/>-->
 
     <?php wp_head(); ?>
     <script type='text/javascript'>
@@ -31,20 +32,7 @@
 <body <?php body_class(); ?>>
 
 <?php if (is_home()) { ?>
-    <!--<div id="hola">-->
-    <!--    <div id="preloader">-->
-    <!--        <div class="preloader-logo">-->
-    <!--            <img  src="--><?php //echo get_theme_file_uri('/assets/images/Logo.png') ?><!--" alt="логотип">-->
-    <!--        </div>-->
-    <!--        <div class="preloader-bar">-->
-    <!--            <span></span>-->
-    <!--            <span></span>-->
-    <!--        </div>-->
-    <!--        <a href="#" class="close-preloader">-->
-    <!--            --><?php // _e('Закрыть прелоадер', 'light'); ?>
-    <!--        </a>-->
-    <!--    </div>-->
-    <!--</div>-->
+
 <?php } ?>
 <div id="page" class="site  <?= get_locale(); ?>">
 
@@ -61,6 +49,12 @@
         </div>
     </header><!-- #masthead -->
 
+    <a id="mobile-toggle" href="#" class="mobile-toggle hamburger hamburger--collapse hamburger--3dx  ">
+                                 <span class="hamburger-box">
+                                     <span class="hamburger-inner"></span>
+                                 </span>
+    </a>
+
 
     <div class="site-content-contain">
         <div id="top-bar">
@@ -72,23 +66,23 @@
             <div class="container-custom">
                 <div class="row">
                     <div class="first-column col-sm-6 col-xs-12">
-                            <div class="phone-block ">
-                                <div class="img-block">
-                                    <img src="<?php echo get_theme_file_uri('/assets/images/phone.png') ?>"
-                                         alt="иконка">
-                                </div>
-                                <div class="content">
-                                    <a href="tel:<?= $redyPhone; ?>" class="link-clean"><?= $phone; ?></a>
-                                </div>
+                        <div class="phone-block ">
+                            <div class="img-block">
+                                <img src="<?php echo get_theme_file_uri('/assets/images/phone.png') ?>"
+                                     alt="иконка">
                             </div>
-                            <div class="email-block  ">
-                                <div class="img-block">
-                                    <img src="<?php echo get_theme_file_uri('/assets/images/mail.png') ?>" alt="иконка">
-                                </div>
-                                <div class="content">
-                                    <a href="mailto:<?= $email; ?>" class="link-clean"><?= $email; ?></a>
-                                </div>
+                            <div class="content">
+                                <a href="tel:<?= $redyPhone; ?>" class="link-clean"><?= $phone; ?></a>
                             </div>
+                        </div>
+                        <div class="email-block  ">
+                            <div class="img-block">
+                                <img src="<?php echo get_theme_file_uri('/assets/images/mail.png') ?>" alt="иконка">
+                            </div>
+                            <div class="content">
+                                <a href="mailto:<?= $email; ?>" class="link-clean"><?= $email; ?></a>
+                            </div>
+                        </div>
 
                     </div>
                     <div class="col-sm-6 col-xs-12">

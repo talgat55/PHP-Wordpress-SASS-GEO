@@ -23,6 +23,7 @@ add_theme_support('post-thumbnails');
 add_image_size('product-item', 244, 300, true);
 add_image_size('event-image', 370, 310, true);
 add_image_size('news-image', 320, 205, true);
+add_image_size('about-image', 959, 500, true);
 
 /**
  * Enqueue scripts and styles.
@@ -80,7 +81,7 @@ function th_scripts()
 
     wp_enqueue_script('menu', get_theme_file_uri('/assets/js/components/menu/menu.js'), array(), '', true);
 
-    if (is_page_template('page-contacts.php')) {
+    if (is_page_template('page-contacts.php')  ||  is_home()) {
 
         wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDkewQZi7iY6eOtlXajXXHFWHECGYWqfMs&language=ru', array(), '2');
         wp_enqueue_script('maps', get_theme_file_uri('/assets/js/maps.js'), array(), '');

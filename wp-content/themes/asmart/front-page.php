@@ -19,7 +19,7 @@ get_header(); ?>
                     </a>
                     <div class="kinds-block">
                         <div class="row">
-                            <div class="item col-sm-3 col-xs-12">
+                            <div class="item col-lg-3 col-sm-6  col-xs-12">
                                 <a href="#" class="item-walp">
                                     <h3 class="title">
                                         ГеоЛад-Актив
@@ -38,10 +38,10 @@ get_header(); ?>
                                     </div>
                                 </a>
                             </div>
-                            <div class="item col-sm-3 col-xs-12">
+                            <div class="item col-lg-3 col-sm-6  col-xs-12">
                                 <a href="#" class="item-walp">
                                     <h3 class="title">
-                                        ГеоЛад-Актив
+                                        ГеоЛад-ГИС
                                     </h3>
                                     <div class="content">
                                         геофизические и геолого - технологические исследования скважин
@@ -57,7 +57,7 @@ get_header(); ?>
                                     </div>
                                 </a>
                             </div>
-                            <div class="item col-sm-3 col-xs-12">
+                            <div class="item col-lg-3 col-sm-6  col-xs-12">
                                 <a href="#" class="item-walp">
                                     <h3 class="title">
                                         Геолад - Скважинные Технологии
@@ -76,7 +76,7 @@ get_header(); ?>
                                     </div>
                                 </a>
                             </div>
-                            <div class="item col-sm-3 col-xs-12">
+                            <div class="item col-lg-3 col-sm-6  col-xs-12">
                                 <a href="#" class="item-walp">
                                     <h3 class="title">
                                         ГеоЛад - Скважинные Технологии Поволжья
@@ -155,7 +155,7 @@ get_header(); ?>
                             $link = get_field('link_partners', $post_id);
 
                             ?>
-                            <li class="item  ">
+                            <li class="item col ">
                                 <a href="<?= $link; ?>" target="_blank">
                                     <img src="<?= $img_url; ?>" alt="Логотип партнер"/>
                                 </a>
@@ -189,8 +189,7 @@ get_header(); ?>
         </div>
     </section>
     <section class="map-block relative">
-        <img src="<?php echo get_theme_file_uri('/assets/images/bg-four.jpg') ?>" alt="карта">
-
+        <div id="map"></div>
         <div class="content-block">
             <div class="container-custom relative">
                 <div class="row">

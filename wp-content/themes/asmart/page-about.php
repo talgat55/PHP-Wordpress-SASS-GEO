@@ -71,7 +71,7 @@ get_header(); ?>
                                         $post_id = $the_query->post->ID;
                                         ?>
                                         <li>
-                                            <img src="  <?= wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), "full")[0]; ?> "
+                                            <img src="  <?= wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), "about-image")[0]; ?> "
                                                  alt="Изображение">
                                         </li>
                                         <?php
@@ -134,7 +134,7 @@ get_header(); ?>
                             Технопарк
                         </h2>
                         <div class="row  ">
-                            <div class="content col-sm-8 col-xs-12">
+                            <div class="content col-md-8 col-xs-12">
                                 Транспортный цех АО «СНПХ» является стабильно развивающимся <span>структурным блоком,</span> основной
                                 деятельностью которого является оказание широкого спектра транспортных услуг. В <span>его
                                     составе имеется</span> многофункциональная и мобильная техника отечественного и импортного
@@ -153,7 +153,7 @@ get_header(); ?>
                                     технику,</span> спецтехнику, подъемные агрегаты и прочие транспортные средства. Парк техники
                                 постоянно обновляется. Cрок службы у большинства транспортных средств – менее 3-х лет.
                             </div>
-                            <div class="aside col-sm-4 col-xs-12">
+                            <div class="aside col-md-4 col-xs-12">
                                 <img class="img-aside" src="<?php echo get_theme_file_uri('/assets/images/about1.jpg') ?>"
                                      alt="Изображение">
                                 <img class="img-aside"  src="<?php echo get_theme_file_uri('/assets/images/about2.jpg') ?>"

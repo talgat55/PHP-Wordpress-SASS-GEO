@@ -133,11 +133,23 @@ function init() {
         anchor: new google.maps.Point(0, 56)
     }
     // Let's also add a marker while we're at it
+    var contentStringOne = '<div id="content"> Главный офис</div>';
+    var infowindowOne = new google.maps.InfoWindow({
+        content: contentStringOne
+    });
     var marker = new google.maps.Marker({
         position: new google.maps.LatLng(62.105812, 77.497884),
         map: map,
         icon: image,
-        title: 'Главный офиск'
+        title: 'Главный офис'
+    });
+    marker.addListener('click', function() {
+        infowindowOne.open(map, marker);
+    });
+
+    var contentStringTwo = '<div id="content">Офис</div>';
+    var infowindowTwo = new google.maps.InfoWindow({
+        content: contentStringTwo
     });
     var marker2 = new google.maps.Marker({
         position: new google.maps.LatLng(51.575162, 45.955283),
@@ -145,11 +157,22 @@ function init() {
         icon: image,
         title: 'Офис'
     });
+    marker2.addListener('click', function() {
+        infowindowTwo.open(map, marker2);
+    });
+
     var marker3 = new google.maps.Marker({
         position: new google.maps.LatLng(66.054250, 76.483625),
         map: map,
         icon: image,
         title: 'Офис'
+    });
+    var contentStringTree = '<div id="content">Офис 1</div>';
+    var infowindowTree = new google.maps.InfoWindow({
+        content: contentStringTree
+    });
+    marker3.addListener('click', function() {
+        infowindowTree.open(map, marker3);
     });
     var marker4 = new google.maps.Marker({
         position: new google.maps.LatLng(52.281672, 104.288820),
@@ -158,5 +181,13 @@ function init() {
         title: 'Офис'
     });
 
+    var contentStringFour = '<div id="content">Офис 2</div>';
+    var infowindowFour = new google.maps.InfoWindow({
+        content: contentStringFour
+    });
+
+    marker4.addListener('click', function() {
+        infowindowFour.open(map, marker4);
+    });
 
 }

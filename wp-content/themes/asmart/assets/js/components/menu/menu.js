@@ -20,5 +20,23 @@ jQuery(document).ready(function () {
     // Add arrow down for li have sub menu
     //
     jQuery('#menu-main .menu-item-has-children ').append('<i class="fa  fa-angle-down title-icon"></i>');
+
+    //
+    //  Mobile toggle
+    //
+    var mobileSelector = jQuery('#mobile-toggle');
+    var headerSelector = jQuery('header');
+
+    mobileSelector.click(function(e) {
+        e.preventDefault();
+
+        mobileSelector.toggleClass('is-active');
+        headerSelector.toggleClass('is-active');
+
+    });
+
+
+
+
 // end redy function
 });

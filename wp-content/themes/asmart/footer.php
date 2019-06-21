@@ -9,7 +9,7 @@ $redyPhone = $phone ? pregPhone($phone) : '';
         <div class="first-row">
             <div class="row">
 
-                <div class="col-sm-6 col-xs-12">
+                <div class="col-md-6 col-xs-12">
                     <div class="content">
                         <h3 class="title">
                             Навигация
@@ -17,7 +17,7 @@ $redyPhone = $phone ? pregPhone($phone) : '';
                         <?php wp_nav_menu('menu_id=menu-main-footer&container=div&menu_class=bottom-main-container clearfix&theme_location=top_menu'); ?>
                     </div>
                 </div>
-                <div class="col-sm-6 col-xs-12">
+                <div class="col-md-6 col-xs-12">
                     <div class="content">
                         <h3 class="title">
                             Контакты
@@ -48,12 +48,12 @@ $redyPhone = $phone ? pregPhone($phone) : '';
         </div>
         <div class="second-row">
             <div class="row">
-            <div class="col-sm-6 col-xs-12 text-left">
+            <div class="col-lg-6 col-xs-12 text-left">
                 <p class="copyright">
                     ГК «ГеоЛад» © 2019 г. Все права защищены
                 </p>
             </div>
-            <div class="col-sm-6 col-xs-12 text-right">
+            <div class="col-lg-6 col-xs-12 text-right">
                 <a target="_blank" class="bootom-copyright" title="Перейти на сайт разработчика"
                    href="http://asmart-group.ru/"><?php _e('Разработка сайта:', 'light'); ?>
                     <span>Asmart Group</span></a>
