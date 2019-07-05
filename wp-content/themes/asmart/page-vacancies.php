@@ -7,9 +7,10 @@ get_header(); ?>
                 <div class="container-custom ">
                     <div class="row">
                          <div class="col-sm-12 col-xs-12">
+                         <div class="row">
                         <?php dimox_breadcrumbs(); ?>
-                             <h1 class="title  black"><?php the_title(); ?></h1>
-                             <div id="vacancies-list">
+                             <h1 class="title  black w-100"><?php the_title(); ?></h1>
+                             <div id="vacancies-list" class="w-100">
                                  <?php
                                  $args = array(
                                      'posts_per_page' => '-1',
@@ -34,7 +35,7 @@ get_header(); ?>
                                              <div slot="title"><?= get_the_title($post_id); ?></div>
                                              <?php the_content($post_id); ?>
                                              <div>
-                                                 <a href="#" class="link-alt-two">
+                                                 <a href="mailto:reception@geolad.ru" class="link-alt-two">
                                                      Отправить резюме
                                                  </a>
                                              </div>
@@ -50,6 +51,7 @@ get_header(); ?>
                                  ?>
 
                              </div>
+                         </div>
                          </div>
                     </div>
                 </div>

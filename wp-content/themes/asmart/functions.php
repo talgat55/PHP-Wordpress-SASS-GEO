@@ -79,9 +79,9 @@ function th_scripts()
 
     }
 
-    wp_enqueue_script('menu', get_theme_file_uri('/assets/js/components/menu/menu.js'), array(), '', true);
-
-    if (is_page_template('page-contacts.php')  ||  is_home()) {
+    wp_enqueue_script('main', get_theme_file_uri('/assets/js/components/main/main.js'), array(), '', true);
+    $pagename = get_query_var('pagename');
+    if (is_page_template('page-contacts.php')  ||  is_home()  || $pagename =='geografiya-prisutstviya') {
 
         wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDkewQZi7iY6eOtlXajXXHFWHECGYWqfMs&language=ru', array(), '2');
         wp_enqueue_script('maps', get_theme_file_uri('/assets/js/maps.js'), array(), '');

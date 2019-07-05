@@ -15,7 +15,11 @@
  * @version 1.0
  */
 
-get_header(); ?>
+get_header();
+
+$pagename = get_query_var('pagename');
+
+?>
     <div id="primary" class="content-area  ">
 
         <div class="container-custom">
@@ -29,9 +33,36 @@ get_header(); ?>
                         the_content();
 
                     endwhile;  ?>
+                    <?php
+
+                        if($pagename == 'geografiya-prisutstviya') {
+                            $parent = get_field('data');
+
+                            foreach ($parent as $item){
+
+                                  print($item['child_data_info']);
+
+                            }
+
+
+                        }
+
+                    ?>
+
                 </div>
             </div>
         </div>
     </div>
+<?php
+
+
+
+if($pagename == 'geografiya-prisutstviya') {
+    ?>
+    <section class="map-block relative">
+        <div id="map"></div>
+    </section>
+
+<?php } ?>
 
 <?php get_footer();

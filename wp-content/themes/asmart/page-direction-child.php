@@ -8,8 +8,9 @@ get_header(); ?>
         <div class="container-custom ">
             <div class="row">
                 <div class="col-sm-12 col-xs-12">
+                <div class="row">
                     <?php dimox_breadcrumbs(); ?>
-                    <h1 class="title  black"><?php the_title(); ?></h1>
+                    <h1 class="title  black w-100"><?php the_title(); ?></h1>
                     <div class="content">
                         <?php
                         while (have_posts()) : the_post();
@@ -17,6 +18,7 @@ get_header(); ?>
                             the_content();
 
                         endwhile; ?>
+                    </div>
                     </div>
                 </div>
             </div>

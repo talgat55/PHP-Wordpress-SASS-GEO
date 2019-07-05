@@ -4,6 +4,7 @@
 
 jQuery(document).ready(function () {
     "use strict";
+
     //
     //  navigation dropdown
     //
@@ -35,8 +36,23 @@ jQuery(document).ready(function () {
 
     });
 
+    //
+    //  Modal toggle
+    //
+    var modalClickSelector = jQuery('.link.link-call, .overlay-layer , .custom-modal i');
+    var modalSelector = jQuery('.custom-modal, .overlay-layer');
+
+    modalClickSelector.click(function(e) {
+        e.preventDefault();
+
+        modalSelector.toggleClass('is-active');
+
+    });
+
 
 
 
 // end redy function
 });
+
+

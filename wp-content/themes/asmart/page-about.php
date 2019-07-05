@@ -9,8 +9,9 @@ get_header(); ?>
         <div class="container-custom ">
             <div class="row  padding-bottom-80">
                 <div class="col-sm-12 col-xs-12">
+                <div class="row">
                     <?php dimox_breadcrumbs(); ?>
-                    <h1 class="title  black"><?php the_title(); ?></h1>
+                    <h1 class="title  black w-100"><?php the_title(); ?></h1>
 
 
                     <div class="first-block">
@@ -47,7 +48,7 @@ get_header(); ?>
                             </div>
                         </div>
                     </div>
-                    <div class="second-block">
+                    <div class="second-block w-100">
 
                         <div id="list-slider">
 
@@ -164,6 +165,7 @@ get_header(); ?>
 
                     </div>
 
+                </div>
                 </div>
             </div>
         </div>

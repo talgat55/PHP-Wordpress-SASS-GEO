@@ -290,6 +290,114 @@ a.link-alt {
 .fade-enter, .fade-leave-to {
   opacity: 0; }
 
+.page-id-103 .content-area a {
+  font-size: 18px;
+  color: #4498E5;
+  text-decoration: none;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s; }
+  .page-id-103 .content-area a:hover {
+    color: #313131;
+    text-decoration: none; }
+
+.custom-modal {
+  position: fixed;
+  z-index: 99999;
+  background-color: #fff;
+  width: 500px;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  opacity: 0;
+  visibility: hidden;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateY(-50%) translateX(-50%);
+      -ms-transform: translateY(-50%) translateX(-50%);
+          transform: translateY(-50%) translateX(-50%);
+  padding: 20px; }
+  .custom-modal .fa-times {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    right: 0;
+    padding: 20px;
+    cursor: pointer;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+    color: #000; }
+    .custom-modal .fa-times:hover {
+      color: red; }
+  .custom-modal .title {
+    margin-top: 0;
+    color: #000; }
+  .custom-modal input {
+    margin-bottom: 20px;
+    font-size: 15px;
+    color: #313131;
+    font-family: "Gotham Pro Regular"; }
+    .custom-modal input::-webkit-input-placeholder {
+      font-size: 15px;
+      color: #313131;
+      font-family: "Gotham Pro Regular"; }
+    .custom-modal input:-moz-placeholder {
+      font-size: 15px;
+      color: #313131;
+      font-family: "Gotham Pro Regular"; }
+    .custom-modal input::-moz-placeholder {
+      font-size: 15px;
+      color: #313131;
+      font-family: "Gotham Pro Regular"; }
+    .custom-modal input:-ms-input-placeholder {
+      font-size: 15px;
+      color: #313131;
+      font-family: "Gotham Pro Regular"; }
+    .custom-modal input:active, .custom-modal input:focus {
+      outline: none;
+      -webkit-box-shadow: none;
+              box-shadow: none;
+      border-color: #ced4da; }
+  .custom-modal input[type=submit] {
+    color: #fff !important;
+    background-color: #4498E5;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+    font-family: "Gotham Pro Regular"; }
+    .custom-modal input[type=submit]:hover {
+      background-color: #313131;
+      border-color: #313131; }
+  .custom-modal .policy-block {
+    font-size: 10px;
+    color: rgba(49, 49, 49, 0.6);
+    font-family: "Gotham Pro Regular"; }
+
+.overlay-layer {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  opacity: 0;
+  visibility: hidden; }
+
+.overlay-layer.is-active,
+.custom-modal.is-active {
+  visibility: visible !important;
+  opacity: 1 !important; }
+
+span.wpcf7-not-valid-tip {
+  margin-bottom: 20px !important; }
+
 header {
   width: 340px;
   overflow-y: auto;
@@ -416,7 +524,7 @@ body:not(.home) #top-bar {
           font-family: "Gotham Pro Medium"; }
         #top-bar .email-block .content a:hover,
         #top-bar .phone-block .content a:hover {
-          color: #333;
+          color: yellow;
           text-decoration: none; }
   #top-bar .email-block {
     margin-left: 40px; }
@@ -430,7 +538,7 @@ body:not(.home) #top-bar {
 
 #mobile-toggle {
   position: fixed;
-  top: 64px;
+  top: 27px;
   cursor: pointer;
   display: none;
   left: 29px;
@@ -641,7 +749,8 @@ body:not(.home) #top-bar {
   .home .partners-block .bar {
     width: 100%;
     position: absolute;
-    top: 50px; }
+    top: 50px;
+    z-index: 2; }
   .page-template-page-partners .pathers-list,
   .home .partners-block .pathers-list {
     margin: 0;
@@ -793,7 +902,6 @@ body:not(.home) #top-bar {
       #news-list ul .item .img-block img {
         width: 320px; }
     #news-list ul .item .text .title {
-      line-height: .5;
       margin-top: 0;
       margin-bottom: 12px; }
       #news-list ul .item .text .title a {
@@ -1195,6 +1303,8 @@ body:not(.home) footer {
       padding: 57px 30px 40px; }
       header .logo img {
         width: 165px; }
+  .page-template-page-structure-php .arrow img {
+    display: none; }
   #mobile-toggle {
     display: block; }
   .container-custom {
@@ -1245,6 +1355,8 @@ body:not(.home) footer {
     display: table; } }
 
 @media (max-width: 768px) {
+  .custom-modal {
+    width: 100% !important; }
   .page-template-page-direction-php .list-directions .item-col:first-child {
     padding-right: 15px; }
   .page-template-page-direction-php .list-directions .item-col:last-child {
@@ -1268,6 +1380,9 @@ body:not(.home) footer {
     padding-bottom: 20px; } }
 
 @media (max-width: 600px) {
+  .container-custom {
+    padding-right: 15px;
+    padding-left: 15px; }
   #top-bar .first-column {
     padding: 0 !important; }
     #top-bar .first-column .phone-block,
@@ -1297,4 +1412,37 @@ body:not(.home) footer {
     display: table; }
   #primary:before,
   .map-block .content-block {
-    display: none !important; } }
+    display: none !important; }
+  .page-template-page-structure-php .kinds-block,
+  .home .kinds-block {
+    background-color: transparent !important;
+    border: none; }
+    .page-template-page-structure-php .kinds-block .item,
+    .home .kinds-block .item {
+      background-color: #fff;
+      margin-bottom: 10px;
+      border: 1px solid #ECECEC; }
+  .page-template-page-partners .pathers-list li:hover,
+  .home .partners-block .pathers-list li:hover {
+    background: none !important; }
+  .page-template-page-direction-php .list-directions .item-col:last-child,
+  .page-template-page-direction-php .list-directions .item-col:first-child {
+    padding-bottom: 15px !important; }
+  .page-template-page-partners #primary .pathers-list li {
+    width: 100%; }
+    .page-template-page-partners #primary .pathers-list li a {
+      margin: 0 auto;
+      display: table !important; }
+  #news-list {
+    width: 100%; }
+    #news-list .list-news .item {
+      display: block !important; }
+  #vacancies-list .accordion .title {
+    font-size: 17px; }
+  #vacancies-list .accordion .content .content-inner {
+    padding: 15px;
+    font-size: 15px; }
+  .page-template-page-structure-php .kinds-block .item:first-child {
+    padding-left: 0 !important; }
+  .page-template-page-structure-php .kinds-block .item .item-walp {
+    width: 90% !important; } }
