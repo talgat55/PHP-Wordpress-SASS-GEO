@@ -76,6 +76,7 @@
             ?>
             <div class="container-custom">
                 <div class="row">
+
                     <div class="first-column col-sm-6 col-xs-12">
                         <div class="phone-block ">
                             <div class="img-block">
